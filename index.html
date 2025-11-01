@@ -321,6 +321,12 @@
             map.addLayer(acuteCareLayer);
             map.addLayer(pscLayer);
             map.addLayer(cscLayer);
+
+            // Open all permanent tooltips
+            cahLayer.eachLayer(layer => layer.openTooltip());
+            acuteCareLayer.eachLayer(layer => layer.openTooltip());
+            pscLayer.eachLayer(layer => layer.openTooltip());
+            cscLayer.eachLayer(layer => layer.openTooltip());
         }
 
         function createMarker(hospital, icon, layer) {
