@@ -322,35 +322,52 @@
             map.addLayer(pscLayer);
             map.addLayer(cscLayer);
 
-            // Open all permanent tooltips
-            cahLayer.eachLayer(layer => layer.openTooltip());
-            acuteCareLayer.eachLayer(layer => layer.openTooltip());
-            pscLayer.eachLayer(layer => layer.openTooltip());
-            cscLayer.eachLayer(layer => layer.openTooltip());
+            // Add permanent tooltips AFTER markers are on the map
+            cahLayer.eachLayer(marker => {
+                marker.bindTooltip(marker.hospitalData.name, {
+                    permanent: true,
+                    direction: 'right',
+                    className: 'hospital-label',
+                    offset: [10, 0]
+                }).openTooltip();
+            });
+            acuteCareLayer.eachLayer(marker => {
+                marker.bindTooltip(marker.hospitalData.name, {
+                    permanent: true,
+                    direction: 'right',
+                    className: 'hospital-label',
+                    offset: [10, 0]
+                }).openTooltip();
+            });
+            pscLayer.eachLayer(marker => {
+                marker.bindTooltip(marker.hospitalData.name, {
+                    permanent: true,
+                    direction: 'right',
+                    className: 'hospital-label',
+                    offset: [10, 0]
+                }).openTooltip();
+            });
+            cscLayer.eachLayer(marker => {
+                marker.bindTooltip(marker.hospitalData.name, {
+                    permanent: true,
+                    direction: 'right',
+                    className: 'hospital-label',
+                    offset: [10, 0]
+                }).openTooltip();
+            });
         }
 
         function createMarker(hospital, icon, layer) {
             const marker = L.marker([hospital.lat, hospital.lon], { icon: icon });
             marker.bindPopup(formatPopup(hospital));
-
-            // Add permanent label with hospital name
-            const tooltip = L.tooltip({
-                permanent: true,
-                direction: 'right',
-                className: 'hospital-label',
-                offset: [10, 0],
-                opacity: 1
-            }).setContent(hospital.name);
-
-            marker.bindTooltip(tooltip);
-
             marker.hospitalData = hospital; // Attach data to marker
-            layer.addLayer(marker);
 
             // Add to filterable list only if it's a CAH or AcuteCare
             if (hospital.type === 'CAH' || hospital.type === 'AcuteCare') {
                  allMapLayers.push(marker);
             }
+
+            layer.addLayer(marker);
         }
 
         // --- 4. POPUP & DISTANCE LOGIC ---
