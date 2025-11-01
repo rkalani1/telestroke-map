@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pacific Northwest Telestroke Network Map</title>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        body { margin: 0; padding: 0; font-family: sans-serif; }
+        #map { height: 100vh; width: 100vw; }
+
+        /* Hospital marker styles */
+        .hospital-marker {
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+        }
+
+        .marker-icon {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 0 4px rgba(0,0,0,0.4);
+            margin-right: 6px;
+        }
+
+        .marker-icon.cah { background-color: #2563eb; }
+        .marker-icon.acute { background-color: #6b7280; }
+        .marker-icon.psc { background-color: #991b1b; }
+        .marker-icon.csc { background-color: #7c3aed; }
+
+        .marker-label {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #1f2937;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            border: 1px solid #d1d5db;
+        }
+
+        .leaflet-popup-content-wrapper {
+            border-radius: 8px;
+        }
+
+        #filter-panel { z-index: 1000; }
+    </style>
+</head>
+<body>
+
+    <!-- Map Container -->
+    <div id="map"></div>
+
+    <!-- Filter Panel -->
+    <div id="filter-panel" class="absolute top-4 right-4 bg-white p-4 rounded-lg shadow-lg max-w-xs w-full border border-gray-200 max-h-[95vh] overflow-y-auto">
+        <h3 class="text-lg font-bold mb-3 text-gray-800 border-b pb-2">Filters</h3>
+
+        <!-- Layer Toggles -->
+        <div class="mb-4">
+            <h4 class="font-semibold text-gray-700 mb-2">Toggle Layers</h4>
+            <div class="space-y-1">
+                <div>
+                    <input type="checkbox" id="cah-toggle" checked>
+                    <label for="cah-toggle" class="ml-2 text-sm"><span class="inline-block w-3 h-3 rounded-full bg-blue-600"></span> Critical Access (CAH)</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="acute-toggle" checked>
+                    <label for="acute-toggle" class="ml-2 text-sm"><span class="inline-block w-3 h-3 rounded-full bg-gray-600"></span> Acute Care</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="psc-toggle" checked>
+                    <label for="psc-toggle" class="ml-2 text-sm"><span class="inline-block w-3 h-3 rounded-full bg-red-800"></span> Primary Stroke (PSC)</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="csc-toggle" checked>
+                    <label for="csc-toggle" class="ml-2 text-sm"><span class="inline-block w-3 h-3 rounded-full bg-purple-600"></span> Comprehensive (CSC)</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Affiliation Filter -->
+        <div class="mb-4">
+            <label class="block font-semibold text-gray-700 mb-2">Telestroke Affiliation</label>
+            <select id="affiliation-filter" class="w-full p-2 border border-gray-300 rounded-md text-sm">
+                <option value="all">Show All</option>
+                <option value="TBD">Unaffiliated / TBD</option>
+                <option value="UW Medicine">UW Medicine</option>
+                <option value="Competitor">Competitor Affiliated</option>
+            </select>
+        </div>
+    </div>
+
+    <script>
+        // Hospital Data
+        const harborviewCoords = { lat: 47.604, lon: -122.325 };
+
+        const hospitalData = [
+            { name: "Arbor Health, Morton Hospital", city: "Morton, WA", lat: 46.557, lon: -122.28, type: "CAH", affiliation: "Independent", telestrokePartner: "TBD", stateStrokeLevel: "Level III" },
+            { name: "Astria Sunnyside Hospital", city: "Sunnyside, WA", lat: 46.326, lon: -120.005, type: "CAH", affiliation: "Astria Health", telestrokePartner: "TBD", stateStrokeLevel: "Level III" },
+            { name: "Cascade Medical Center", city: "Leavenworth, WA", lat: 47.595, lon: -120.66, type: "CAH", affiliation: "Independent", telestrokePartner: "TBD", stateStrokeLevel: "Level II" },
+            { name: "Columbia Basin Hospital", city: "Ephrata, WA", lat: 47.316, lon: -119.539, type: "CAH", affiliation: "Independent", telestrokePartner: "TBD", stateStrokeLevel: "Level III" },
+            { name: "Columbia County Health System", city: "Dayton, WA", lat: 46.319, lon: -117.973, type: "CAH", affiliation: "Independent", telestrokePartner: "Providence", stateStrokeLevel: "Level III" },
+            { name: "Coulee Medical Center", city: "Grand Coulee, WA", lat: 47.939, lon: -118.983, type: "CAH", affiliation: "Independent", telestrokePartner: "Providence", stateStrokeLevel: "Level III" },
+            { name: "East Adams Rural Healthcare", city: "Ritzville, WA", lat: 47.126, lon: -118.384, type: "CAH", affiliation: "Independent", telestrokePartner: "TBD", stateStrokeLevel: "Level III" },
+            { name: "Ferry County Memorial Hospital", city: "Republic, WA", lat: 48.65, lon: -118.729, type: "CAH", affiliation: "Independent", telestrokePartner: "Providence", stateStrokeLevel: "Level III" },
+            { name: "Forks Community Hospital", city: "Forks, WA", lat: 47.949, lon: -124.383, type: "CAH", affiliation: "Independent", telestrokePartner: "UW Medicine", stateStrokeLevel: "Level III" },
+            { name: "Garfield County Hospital District", city: "Pomeroy, WA", lat: 46.471, lon: -117.595, type: "CAH", affiliation: "Independent", telestrokePartner: "TBD", stateStrokeLevel: "Level III" },
+            { name: "Island Health", city: "Anacortes, WA", lat: 48.498, lon: -122.61, type: "CAH", affiliation: "Independent", telestrokePartner: "UW Medicine", stateStrokeLevel: "Level II" },
+            { name: "Jefferson Healthcare", city: "Port Townsend, WA", lat: 48.106, lon: -122.784, type: "CAH", affiliation: "Independent", telestrokePartner: "UW Medicine", stateStrokeLevel: "Level III" },
+            { name: "Kittitas Valley Healthcare", city: "Ellensburg, WA", lat: 46.992, lon: -120.536, type: "CAH", affiliation: "Independent", telestrokePartner: "UW Medicine", stateStrokeLevel: "Level II" },
+            { name: "Klickitat Valley Health", city: "Goldendale, WA", lat: 45.819, lon: -120.819, type: "CAH", affiliation: "Independent", telestrokePartner: "TBD", stateStrokeLevel: "Level III" },
+            { name: "Lake Chelan Community Hospital", city: "Chelan, WA", lat: 47.837, lon: -120.034, type: "CAH", affiliation: "Independent", telestrokePartner: "TBD", stateStrokeLevel: "Level III" },
+            { name: "Lincoln Hospital", city: "Davenport, WA", lat: 47.653, lon: -118.151, type: "CAH", affiliation: "Independent", telestrokePartner: "Providence", stateStrokeLevel: "Level III" },
+            { name: "Lourdes Medical Center", city: "Pasco, WA", lat: 46.234, lon: -119.098, type: "CAH", affiliation: "ScionHealth", telestrokePartner: "TBD", stateStrokeLevel: "Level III" },
+            { name: "Mason Health", city: "Shelton, WA", lat: 47.227, lon: -123.114, type: "CAH", affiliation: "Independent", telestrokePartner: "Providence", stateStrokeLevel: "Level III" },
+            { name: "Mid-Valley Hospital", city: "Omak, WA", lat: 48.423, lon: -119.516, type: "CAH", affiliation: "Independent", telestrokePartner: "Providence", stateStrokeLevel: "Level III" },
+            { name: "Newport Hospital & Health Services", city: "Newport, WA", lat: 48.179, lon: -117.042, type: "CAH", affiliation: "Independent", telestrokePartner: "Providence", stateStrokeLevel: "Level III" },
+            { name: "North Valley Hospital", city: "Tonasket, WA", lat: 48.718, lon: -119.439, type: "CAH", affiliation: "Independent", telestrokePartner: "TBD", stateStrokeLevel: "Level III" },
+            { name: "Ocean Beach Hospital", city: "Ilwaco, WA", lat: 46.309, lon: -124.041, type: "CAH", affiliation: "Independent", telestrokePartner: "TBD", stateStrokeLevel: "Level III" },
+            { name: "Odessa Memorial Healthcare Center", city: "Odessa, WA", lat: 47.334, lon: -118.686, type: "CAH", affiliation: "Independent", telestrokePartner: "TBD", stateStrokeLevel: "Level III" },
+            { name: "Olympic Medical Center", city: "Port Angeles, WA", lat: 48.11, lon: -123.456, type: "CAH", affiliation: "Independent", telestrokePartner: "UW Medicine", stateStrokeLevel: "Level II" },
+            { name: "Othello Community Hospital", city: "Othello, WA", lat: 46.822, lon: -119.162, type: "CAH", affiliation: "Independent", telestrokePartner: "TBD", stateStrokeLevel: "Level III" },
+            { name: "PeaceHealth Peace Island Medical Center", city: "Friday Harbor, WA", lat: 48.53, lon: -123.03, type: "CAH", affiliation: "PeaceHealth", telestrokePartner: "PeaceHealth", stateStrokeLevel: "Level III" },
+            { name: "PeaceHealth United General Medical Center", city: "Sedro-Woolley, WA", lat: 48.508, lon: -122.234, type: "CAH", affiliation: "PeaceHealth", telestrokePartner: "PeaceHealth", stateStrokeLevel: "Level III" },
+            { name: "Prosser Memorial Health", city: "Prosser, WA", lat: 46.21, lon: -119.778, type: "CAH", affiliation: "Independent", telestrokePartner: "TBD", stateStrokeLevel: "Level III" },
+            { name: "Providence Mount Carmel Hospital", city: "Colville, WA", lat: 48.555, lon: -117.892, type: "CAH", affiliation: "Providence", telestrokePartner: "Providence", stateStrokeLevel: "Level III" },
+            { name: "Providence St. Joseph's Hospital", city: "Chewelah, WA", lat: 48.278, lon: -117.712, type: "CAH", affiliation: "Providence", telestrokePartner: "Providence", stateStrokeLevel: "Level III" },
+            { name: "Pullman Regional Hospital", city: "Pullman, WA", lat: 46.737, lon: -117.155, type: "CAH", affiliation: "Independent", telestrokePartner: "Providence", stateStrokeLevel: "Level III" },
+            { name: "Quincy Valley Medical Center", city: "Quincy, WA", lat: 47.234, lon: -119.865, type: "CAH", affiliation: "Independent", telestrokePartner: "UW Medicine", stateStrokeLevel: "Level III" },
+            { name: "Samaritan Healthcare", city: "Moses Lake, WA", lat: 47.117, lon: -119.263, type: "CAH", affiliation: "Independent", telestrokePartner: "TBD", stateStrokeLevel: "Level III" },
+            { name: "Skyline Health", city: "White Salmon, WA", lat: 45.735, lon: -121.492, type: "CAH", affiliation: "Independent", telestrokePartner: "TBD", stateStrokeLevel: "Level III" },
+            { name: "Snoqualmie Valley Hospital", city: "Snoqualmie, WA", lat: 47.525, lon: -121.821, type: "CAH", affiliation: "Independent", telestrokePartner: "Swedish", stateStrokeLevel: "Level III" },
+            { name: "St. Elizabeth Hospital", city: "Enumclaw, WA", lat: 47.202, lon: -121.986, type: "CAH", affiliation: "Virginia Mason Franciscan", telestrokePartner: "TBD", stateStrokeLevel: "Level III" },
+            { name: "Summit Pacific Medical Center", city: "Elma, WA", lat: 47.004, lon: -123.431, type: "CAH", affiliation: "Independent", telestrokePartner: "Providence", stateStrokeLevel: "Level III" },
+            { name: "Three Rivers Hospital", city: "Brewster, WA", lat: 48.093, lon: -119.768, type: "CAH", affiliation: "Independent", telestrokePartner: "TBD", stateStrokeLevel: "Level III" },
+            { name: "Tri-State Memorial Hospital", city: "Clarkston, WA", lat: 46.401, lon: -117.065, type: "CAH", affiliation: "Independent", telestrokePartner: "TBD", stateStrokeLevel: "Level II" },
+            { name: "WhidbeyHealth Medical Center", city: "Coupeville, WA", lat: 48.203, lon: -122.656, type: "CAH", affiliation: "Independent", telestrokePartner: "UW Medicine", stateStrokeLevel: "Level III" },
+            { name: "Whitman Hospital & Medical Clinics", city: "Colfax, WA", lat: 46.883, lon: -117.362, type: "CAH", affiliation: "Independent", telestrokePartner: "Providence", stateStrokeLevel: "Level III" },
+            { name: "Willapa Harbor Hospital", city: "South Bend, WA", lat: 46.666, lon: -123.805, type: "CAH", affiliation: "Independent", telestrokePartner: "TBD", stateStrokeLevel: "Level III" },
+            // 8 CAHs in Northern ID
+            { name: "Benewah Community Hospital", city: "St. Maries, ID", lat: 47.311, lon: -116.565, type: "CAH", affiliation: "Independent", telestrokePartner: "Kootenai Health", stateStrokeLevel: "Level III" },
+            { name: "Bonner General Hospital", city: "Sandpoint, ID", lat: 48.271, lon: -116.551, type: "CAH", affiliation: "Independent", telestrokePartner: "Kootenai Health", stateStrokeLevel: "Level III" },
+            { name: "Boundary Community Hospital", city: "Bonners Ferry, ID", lat: 48.694, lon: -116.319, type: "CAH", affiliation: "Independent", telestrokePartner: "Kootenai Health", stateStrokeLevel: "Level III" },
+            { name: "Clearwater Valley Hospital", city: "Orofino, ID", lat: 46.483, lon: -116.257, type: "CAH", affiliation: "Independent", telestrokePartner: "TBD", stateStrokeLevel: "TBD" },
+            { name: "Gritman Medical Center", city: "Moscow, ID", lat: 46.732, lon: -117.001, type: "CAH", affiliation: "Independent", telestrokePartner: "TBD", stateStrokeLevel: "Level II" },
+            { name: "Shoshone Medical Center", city: "Kellogg, ID", lat: 47.54, lon: -116.126, type: "CAH", affiliation: "Independent", telestrokePartner: "Kootenai Health", stateStrokeLevel: "TBD" },
+            { name: "St. Mary's Hospital", city: "Cottonwood, ID", lat: 46.059, lon: -116.349, type: "CAH", affiliation: "Independent", telestrokePartner: "TBD", stateStrokeLevel: "TBD" },
+            { name: "Syringa General Hospital", city: "Grangeville, ID", lat: 45.927, lon: -116.128, type: "CAH", affiliation: "Independent", telestrokePartner: "TBD", stateStrokeLevel: "TBD" },
+            // 4 CAHs in SE Alaska
+            { name: "SEARHC Mt. Edgecumbe Medical Center", city: "Sitka, AK", lat: 57.051, lon: -135.353, type: "CAH", affiliation: "SEARHC", telestrokePartner: "TBD", stateStrokeLevel: "TBD" },
+            { name: "Petersburg Medical Center", city: "Petersburg, AK", lat: 56.81, lon: -132.966, type: "CAH", affiliation: "Independent", telestrokePartner: "TBD", stateStrokeLevel: "TBD" },
+            { name: "SEARHC Wrangell Medical Center", city: "Wrangell, AK", lat: 56.477, lon: -132.38, type: "CAH", affiliation: "SEARHC", telestrokePartner: "TBD", stateStrokeLevel: "TBD" },
+            { name: "PeaceHealth Ketchikan Medical Center", city: "Ketchikan, AK", lat: 55.356, lon: -131.67, type: "CAH", affiliation: "PeaceHealth", telestrokePartner: "PeaceHealth", stateStrokeLevel: "TBD" },
+            // Acute Care Hospitals
+            { name: "Harborview Medical Center", city: "Seattle, WA", lat: 47.604, lon: -122.325, type: "CSC", affiliation: "UW Medicine", telestrokePartner: "UW Medicine", stateStrokeLevel: "Level I (CSC)" },
+            { name: "UW Medical Center - Montlake", city: "Seattle, WA", lat: 47.649, lon: -122.308, type: "CSC", affiliation: "UW Medicine", telestrokePartner: "UW Medicine", stateStrokeLevel: "Level I (CSC)" },
+            { name: "Swedish First Hill", city: "Seattle, WA", lat: 47.611, lon: -122.32, type: "CSC", affiliation: "Swedish", telestrokePartner: "Swedish", stateStrokeLevel: "Level I (CSC)" },
+            { name: "Providence Regional Medical Center Everett", city: "Everett, WA", lat: 47.962, lon: -122.20, type: "CSC", affiliation: "Providence", telestrokePartner: "Providence", stateStrokeLevel: "Level I (CSC)" },
+            { name: "MultiCare Tacoma General Hospital", city: "Tacoma, WA", lat: 47.251, lon: -122.454, type: "CSC", affiliation: "MultiCare", telestrokePartner: "MultiCare", stateStrokeLevel: "Level I (CSC)" },
+            { name: "PeaceHealth St. Joseph Medical Center", city: "Bellingham, WA", lat: 48.77, lon: -122.464, type: "CSC", affiliation: "PeaceHealth", telestrokePartner: "PeaceHealth", stateStrokeLevel: "Level I (CSC)" },
+            { name: "Providence St. Peter Hospital", city: "Olympia, WA", lat: 47.017, lon: -122.883, type: "CSC", affiliation: "Providence", telestrokePartner: "Providence", stateStrokeLevel: "Level I (CSC)" },
+            { name: "Kadlec Regional Medical Center", city: "Richland, WA", lat: 46.29, lon: -119.288, type: "CSC", affiliation: "Providence", telestrokePartner: "Providence", stateStrokeLevel: "Level I (CSC)" },
+            { name: "MultiCare Deaconess Hospital", city: "Spokane, WA", lat: 47.653, lon: -117.43, type: "CSC", affiliation: "MultiCare", telestrokePartner: "MultiCare", stateStrokeLevel: "Level I (CSC)" },
+            { name: "Kootenai Health", city: "Coeur d'Alene, ID", lat: 47.697, lon: -116.804, type: "CSC", affiliation: "Kootenai Health", telestrokePartner: "Kootenai Health", stateStrokeLevel: "Level I (CSC)" },
+            { name: "Confluence Health Hospital", city: "Wenatchee, WA", lat: 47.419, lon: -120.323, type: "PSC", affiliation: "Confluence Health", telestrokePartner: "UW Medicine", stateStrokeLevel: "Level II" }
+        ];
+
+        // Initialize Map
+        const map = L.map('map').setView([47.5, -120.5], 6);
+
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+            attribution: '© OpenStreetMap contributors © CARTO',
+            maxZoom: 19
+        }).addTo(map);
+
+        // Store layers and markers
+        const layers = {
+            cah: L.layerGroup().addTo(map),
+            acute: L.layerGroup().addTo(map),
+            psc: L.layerGroup().addTo(map),
+            csc: L.layerGroup().addTo(map)
+        };
+
+        const allMarkers = [];
+
+        // Create markers with labels
+        function createMarker(hospital) {
+            const typeClass = hospital.type === 'CAH' ? 'cah' :
+                            hospital.type === 'PSC' ? 'psc' :
+                            hospital.type === 'CSC' ? 'csc' : 'acute';
+
+            // Create custom div icon with label
+            const iconHtml = `
+                <div class="hospital-marker">
+                    <div class="marker-icon ${typeClass}"></div>
+                    <div class="marker-label">${hospital.name}</div>
+                </div>
+            `;
+
+            const icon = L.divIcon({
+                html: iconHtml,
+                className: 'custom-marker',
+                iconSize: [200, 30],
+                iconAnchor: [6, 15]
+            });
+
+            const marker = L.marker([hospital.lat, hospital.lon], { icon: icon });
+
+            // Add popup
+            const distance = calculateDistance(harborviewCoords.lat, harborviewCoords.lon, hospital.lat, hospital.lon);
+            marker.bindPopup(`
+                <div style="font-size: 13px;">
+                    <h4 style="font-weight: bold; margin-bottom: 8px;">${hospital.name}</h4>
+                    <p style="margin: 2px 0;"><strong>City:</strong> ${hospital.city}</p>
+                    <p style="margin: 2px 0;"><strong>Type:</strong> ${hospital.type}</p>
+                    <p style="margin: 2px 0;"><strong>Distance to HMC:</strong> ${distance.toFixed(0)} miles</p>
+                    <p style="margin: 2px 0;"><strong>Telestroke:</strong> ${hospital.telestrokePartner}</p>
+                    <p style="margin: 2px 0;"><strong>Affiliation:</strong> ${hospital.affiliation}</p>
+                    <p style="margin: 2px 0;"><strong>Stroke Level:</strong> ${hospital.stateStrokeLevel}</p>
+                </div>
+            `);
+
+            // Add to appropriate layer
+            marker.addTo(layers[typeClass]);
+            marker.hospitalData = hospital;
+            allMarkers.push(marker);
+        }
+
+        // Calculate distance
+        function calculateDistance(lat1, lon1, lat2, lon2) {
+            const R = 3958.8;
+            const rlat1 = lat1 * (Math.PI / 180);
+            const rlat2 = lat2 * (Math.PI / 180);
+            const diffLat = (lat2 - lat1) * (Math.PI / 180);
+            const diffLon = (lon2 - lon1) * (Math.PI / 180);
+            const a = Math.sin(diffLat / 2) * Math.sin(diffLat / 2) +
+                Math.cos(rlat1) * Math.cos(rlat2) *
+                Math.sin(diffLon / 2) * Math.sin(diffLon / 2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            return R * c;
+        }
+
+        // Create all markers
+        hospitalData.forEach(h => createMarker(h));
+
+        // Filter controls
+        document.getElementById('cah-toggle').addEventListener('change', (e) => {
+            if (e.target.checked) map.addLayer(layers.cah);
+            else map.removeLayer(layers.cah);
+        });
+
+        document.getElementById('acute-toggle').addEventListener('change', (e) => {
+            if (e.target.checked) map.addLayer(layers.acute);
+            else map.removeLayer(layers.acute);
+        });
+
+        document.getElementById('psc-toggle').addEventListener('change', (e) => {
+            if (e.target.checked) map.addLayer(layers.psc);
+            else map.removeLayer(layers.psc);
+        });
+
+        document.getElementById('csc-toggle').addEventListener('change', (e) => {
+            if (e.target.checked) map.addLayer(layers.csc);
+            else map.removeLayer(layers.csc);
+        });
+
+        document.getElementById('affiliation-filter').addEventListener('change', (e) => {
+            const value = e.target.value;
+            allMarkers.forEach(marker => {
+                const data = marker.hospitalData;
+                let show = true;
+
+                if (value === 'TBD' && data.telestrokePartner !== 'TBD') show = false;
+                else if (value === 'UW Medicine' && data.telestrokePartner !== 'UW Medicine') show = false;
+                else if (value === 'Competitor' && (data.telestrokePartner === 'TBD' || data.telestrokePartner === 'UW Medicine')) show = false;
+
+                marker.setOpacity(show ? 1.0 : 0.2);
+            });
+        });
+
+        console.log('Map loaded with', hospitalData.length, 'hospitals');
+    </script>
+</body>
+</html>
