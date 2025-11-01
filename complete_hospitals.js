@@ -82,37 +82,47 @@ function renderMarkers() {
 
     // Filter hospitals with AND logic between categories, OR within categories
     const filtered = HOSPITALS.filter(h => {
-        // Check if any filters are selected in each category
-        const specialSelected = filters.uwPartner || filters.nationalCert || filters.evt;
-        const waLevelSelected = filters.waLevel1 || filters.waLevel2 || filters.waLevel3;
-        const typeSelected = filters.acute || filters.critical || filters.other;
+        // Check which filters are selected and which are not in each category
+        const specialFilters = [filters.uwPartner, filters.nationalCert, filters.evt];
+        const waLevelFilters = [filters.waLevel1, filters.waLevel2, filters.waLevel3];
+        const typeFilters = [filters.acute, filters.critical, filters.other];
+
+        // Check if ALL boxes in a category are checked (means "show all" for that category)
+        const allSpecialChecked = specialFilters.every(f => f);
+        const allWALevelChecked = waLevelFilters.every(f => f);
+        const allTypeChecked = typeFilters.every(f => f);
+
+        // Check if ANY boxes are checked in each category
+        const anySpecialChecked = specialFilters.some(f => f);
+        const anyWALevelChecked = waLevelFilters.some(f => f);
+        const anyTypeChecked = typeFilters.some(f => f);
 
         // If no filters selected at all, show everything
-        if (!specialSelected && !waLevelSelected && !typeSelected) {
+        if (!anySpecialChecked && !anyWALevelChecked && !anyTypeChecked) {
             return true;
         }
 
         // Check each category (OR within category)
-        let passSpecial = !specialSelected; // Pass if category not active
-        let passWALevel = !waLevelSelected;
-        let passType = !typeSelected;
+        let passSpecial = true;
+        let passWALevel = true;
+        let passType = true;
 
-        // Special designation filters (OR)
-        if (specialSelected) {
+        // Special designation filters (OR) - only filter if not all checked
+        if (anySpecialChecked && !allSpecialChecked) {
             passSpecial = (filters.uwPartner && h.uwPartner) ||
                          (filters.nationalCert && h.nationalCertification) ||
                          (filters.evt && h.hasELVO);
         }
 
-        // WA State level filters (OR)
-        if (waLevelSelected) {
+        // WA State level filters (OR) - only filter if not all checked
+        if (anyWALevelChecked && !allWALevelChecked) {
             passWALevel = (filters.waLevel1 && h.waStateStrokeLevel === 'I') ||
                          (filters.waLevel2 && h.waStateStrokeLevel === 'II') ||
                          (filters.waLevel3 && h.waStateStrokeLevel === 'III');
         }
 
-        // Hospital type filters (OR)
-        if (typeSelected) {
+        // Hospital type filters (OR) - only filter if not all checked
+        if (anyTypeChecked && !allTypeChecked) {
             const hospType = (h.hospitalType || '').toLowerCase();
             passType = (filters.acute && hospType.includes('acute care')) ||
                       (filters.critical && h.isCriticalAccess) ||
