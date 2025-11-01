@@ -47,6 +47,21 @@
             color: #9ca3af; /* text-gray-400 */
             font-style: italic;
         }
+
+        /* Permanent label styling */
+        .leaflet-tooltip.hospital-label {
+            background-color: rgba(255, 255, 255, 0.95);
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            font-size: 11px;
+            font-weight: 600;
+            padding: 2px 6px;
+            white-space: nowrap;
+        }
+        .leaflet-tooltip.hospital-label::before {
+            border: none;
+        }
     </style>
 </head>
 <body class="font-sans">
@@ -302,6 +317,15 @@
         function createMarker(hospital, icon, layer) {
             const marker = L.marker([hospital.lat, hospital.lon], { icon: icon });
             marker.bindPopup(formatPopup(hospital));
+
+            // Add permanent label with hospital name
+            marker.bindTooltip(hospital.name, {
+                permanent: true,
+                direction: 'right',
+                className: 'hospital-label',
+                offset: [10, 0]
+            });
+
             marker.hospitalData = hospital; // Attach data to marker
             layer.addLayer(marker);
 
