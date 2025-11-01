@@ -196,7 +196,7 @@ function renderMarkers() {
         // Transfer Time Estimates (Feature 5)
         const transferTimes = getTransferTimeEstimates(hospital);
         if (transferTimes) {
-            popupContent += `<br><strong>Transfer to ${transferTimes.nearestCenter}:</strong><br>`;
+            popupContent += `<br><strong>Transfer to Harborview Medical Center:</strong><br>`;
             popupContent += `~${transferTimes.groundTime} min ground / ${transferTimes.airTime} min air (${transferTimes.distance} mi)<br>`;
             popupContent += `<span style="font-size: 11px; color: #6b7280;">Estimates: 60 mph ground, 150 mph air</span><br>`;
         }
@@ -1260,15 +1260,24 @@ function toggleCSCServiceAreas() {
 // This is integrated into hospital popups - enhancing existing popup function
 
 function getTransferTimeEstimates(hospital) {
-    const hospitalId = hospital.cmsId;
-    const distData = hospitalDistances[hospitalId];
+    // Always calculate transfer times to Harborview Medical Center
+    const harborview = HOSPITALS.find(h => h.name === 'HARBORVIEW MEDICAL CENTER');
 
-    if (!distData || distData.nearestAdvancedDistance === Infinity || distData.nearestAdvancedDistance === 0) {
+    if (!harborview) {
+        console.error('Harborview Medical Center not found in database');
         return null;
     }
 
-    const distance = distData.nearestAdvancedDistance;
-    const nearestCenter = distData.nearestAdvancedName;
+    // Don't show transfer time for Harborview itself
+    if (hospital.cmsId === harborview.cmsId) {
+        return null;
+    }
+
+    // Calculate distance to Harborview
+    const distance = calculateDistance(
+        hospital.latitude, hospital.longitude,
+        harborview.latitude, harborview.longitude
+    );
 
     // Ground: 60 mph average
     const groundTimeHours = distance / 60;
@@ -1279,7 +1288,7 @@ function getTransferTimeEstimates(hospital) {
     const airTimeMinutes = Math.round(airTimeHours * 60 / 5) * 5; // Round to nearest 5 min
 
     return {
-        nearestCenter,
+        nearestCenter: 'Harborview Medical Center',
         distance: distance.toFixed(1),
         groundTime: groundTimeMinutes,
         airTime: airTimeMinutes
@@ -1360,9 +1369,8 @@ function showHospitalDetail(hospital) {
     if (transferTimes) {
         html += `
             <div style="background: #fef3c7; padding: 16px; border-radius: 8px; margin-bottom: 16px;">
-                <h3 style="font-size: 14px; font-weight: 600; margin-bottom: 8px; color: #92400e;">Transfer Time Estimates</h3>
+                <h3 style="font-size: 14px; font-weight: 600; margin-bottom: 8px; color: #92400e;">Transfer Time to Harborview Medical Center</h3>
                 <div style="font-size: 13px; line-height: 1.8; color: #92400e;">
-                    <strong>To ${transferTimes.nearestCenter}:</strong><br>
                     Ground Transfer: ~${transferTimes.groundTime} minutes (${transferTimes.distance} mi @ 60 mph)<br>
                     Air Transfer: ~${transferTimes.airTime} minutes (${transferTimes.distance} mi @ 150 mph)<br>
                     <em style="font-size: 11px;">Estimates assume direct route and average speeds</em>
@@ -1465,7 +1473,7 @@ function quickFilter(filterType) {
         popupHTML += `<strong>UW Partner:</strong> ${hospital.uwPartner ? 'Yes' : 'No'}<br>`;
 
         if (transferTimes) {
-            popupHTML += `<strong>Transfer Time to ${transferTimes.nearestCenter}:</strong><br>`;
+            popupHTML += `<strong>Transfer Time to Harborview Medical Center:</strong><br>`;
             popupHTML += `Ground: ~${transferTimes.groundTime} min | Air: ~${transferTimes.airTime} min<br>`;
         }
 
