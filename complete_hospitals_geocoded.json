@@ -305,7 +305,7 @@
     "uwPartner": false,
     "strokeCertificationType": "CSC",
     "certifyingBody": "Joint Commission",
-    "certificationDetails": "Joint Commission CSC",
+    "certificationDetails": "Joint Commission Comprehensive Stroke Center",
     "hasELVO": true,
     "dataSources": [
       "CMS (Nov 2024)",
@@ -381,7 +381,10 @@
       "CMS (Nov 2024)",
       "WA DOH (Oct 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": "PSC",
+    "certifyingBody": "Joint Commission",
+    "certificationDetails": "Joint Commission Advanced Primary Stroke Center"
   },
   {
     "name": "MULTICARE AUBURN MEDICAL CENTER",
@@ -480,7 +483,11 @@
     "dataSources": [
       "CMS (Nov 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": "CSC",
+    "certifyingBody": "DNV",
+    "certificationDetails": "DNV Comprehensive Stroke Center (November 2024)",
+    "hasELVO": true
   },
   {
     "name": "SWEDISH EDMONDS HOSPITAL",
@@ -660,11 +667,12 @@
     "uwPartner": false,
     "strokeCertificationType": "PSC",
     "certifyingBody": "DNV",
-    "certificationDetails": "DNV PSC",
+    "certificationDetails": "DNV Primary Stroke Center",
     "dataSources": [
       "CMS (Nov 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "hasELVO": false
   },
   {
     "name": "OVERLAKE HOSPITAL MEDICAL CENTER",
@@ -679,7 +687,7 @@
     "uwPartner": false,
     "strokeCertificationType": "TSC",
     "certifyingBody": "Joint Commission",
-    "certificationDetails": "Joint Commission Advanced TSC",
+    "certificationDetails": "Joint Commission Advanced Thrombectomy-Capable Stroke Center (2024)",
     "hasELVO": true,
     "dataSources": [
       "CMS (Nov 2024)",
@@ -717,22 +725,6 @@
     "dataSources": [
       "CMS (Nov 2024)",
       "UW Medicine Telestroke Program"
-    ],
-    "verified": true
-  },
-  {
-    "name": "PROV SACRED HRT MED CTR & CHILDS HOSP.",
-    "address": "101 WEST 8TH AVENUE",
-    "zip": "99220",
-    "state": "WA",
-    "cmsId": "500054",
-    "latitude": 47.648315,
-    "longitude": -117.412172,
-    "geocoded": true,
-    "geocodeSource": "Nominatim/OpenStreetMap",
-    "uwPartner": false,
-    "dataSources": [
-      "CMS (Nov 2024)"
     ],
     "verified": true
   },
@@ -801,7 +793,7 @@
     "uwPartner": false,
     "strokeCertificationType": "CSC",
     "certifyingBody": "Joint Commission",
-    "certificationDetails": "Joint Commission CSC",
+    "certificationDetails": "Joint Commission Comprehensive Stroke Center",
     "hasELVO": true,
     "dataSources": [
       "CMS (Nov 2024)",
@@ -858,7 +850,7 @@
     "uwPartner": false,
     "strokeCertificationType": "PSC",
     "certifyingBody": "DNV",
-    "certificationDetails": "DNV PSC",
+    "certificationDetails": "DNV Primary Stroke Center",
     "hasELVO": false,
     "dataSources": [
       "CMS (Nov 2024)",
@@ -895,7 +887,7 @@
     "uwPartner": false,
     "strokeCertificationType": "TSC",
     "certifyingBody": "Joint Commission",
-    "certificationDetails": "Joint Commission TSC",
+    "certificationDetails": "Joint Commission Thrombectomy-Capable Stroke Center",
     "hasELVO": true,
     "dataSources": [
       "CMS (Nov 2024)"
@@ -937,22 +929,6 @@
     "verified": true
   },
   {
-    "name": "SPOKANE VA MEDICAL CENTER",
-    "address": "4815 N. ASSEMBLY STREET",
-    "zip": "99205",
-    "state": "WA",
-    "cmsId": "50011F",
-    "latitude": 47.703514,
-    "longitude": -117.478057,
-    "geocoded": true,
-    "geocodeSource": "Nominatim/OpenStreetMap",
-    "uwPartner": false,
-    "dataSources": [
-      "CMS (Nov 2024)"
-    ],
-    "verified": true
-  },
-  {
     "name": "EVERGREENHEALTH MEDICAL CENTER",
     "address": "12040 NE 128TH STREET",
     "zip": "98034",
@@ -965,7 +941,7 @@
     "uwPartner": false,
     "strokeCertificationType": "TSC",
     "certifyingBody": "DNV",
-    "certificationDetails": "DNV PSC+",
+    "certificationDetails": "DNV Primary Stroke Center Plus (PSC+)",
     "hasELVO": true,
     "dataSources": [
       "CMS (Nov 2024)",
@@ -987,7 +963,11 @@
     "dataSources": [
       "CMS (Nov 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": "CSC",
+    "certifyingBody": "DNV",
+    "certificationDetails": "DNV Comprehensive Stroke Center (Re-certified 2024)",
+    "hasELVO": true
   },
   {
     "name": "CAPITAL MEDICAL CENTER",
@@ -1083,22 +1063,6 @@
     "cmsId": "500154",
     "latitude": 47.359386,
     "longitude": -122.10399,
-    "geocoded": true,
-    "geocodeSource": "Nominatim/OpenStreetMap",
-    "uwPartner": false,
-    "dataSources": [
-      "CMS (Nov 2024)"
-    ],
-    "verified": true
-  },
-  {
-    "name": "SEATTLE VA MEDICAL CENTER (VA PUGET SOUND HEALTHCARE SYSTEM)",
-    "address": "1660 S. COLUMBIAN WAY",
-    "zip": "98108",
-    "state": "WA",
-    "cmsId": "50030F",
-    "latitude": 47.562685,
-    "longitude": -122.308424,
     "geocoded": true,
     "geocodeSource": "Nominatim/OpenStreetMap",
     "uwPartner": false,
@@ -1778,198 +1742,6 @@
     "dataSources": [
       "CMS (Nov 2024)",
       "UW Medicine Telestroke Program"
-    ],
-    "verified": true
-  },
-  {
-    "name": "SEATTLE CHILDREN'S HOSPITAL",
-    "address": "4800 SAND POINT WAY NE, PO BOX C-5371",
-    "zip": "98105",
-    "state": "WA",
-    "cmsId": "503300",
-    "latitude": 47.6505,
-    "longitude": -122.2996,
-    "geocoded": true,
-    "geocodeSource": "Manual/Web-verified",
-    "uwPartner": false,
-    "dataSources": [
-      "CMS (Nov 2024)"
-    ],
-    "verified": true
-  },
-  {
-    "name": "MARY BRIDGE CHILDREN'S HOSPITAL",
-    "address": "317 MARTIN LUTHER KING JR W BOX 5299",
-    "zip": "98415",
-    "state": "WA",
-    "cmsId": "503301",
-    "latitude": 47.2444,
-    "longitude": -122.4367,
-    "geocoded": true,
-    "geocodeSource": "Manual/Web-verified",
-    "uwPartner": false,
-    "dataSources": [
-      "CMS (Nov 2024)"
-    ],
-    "verified": true
-  },
-  {
-    "name": "SHRINERS HOSPITAL FOR CHILDREN",
-    "address": "911 WEST 5TH AVENUE",
-    "zip": "99204",
-    "state": "WA",
-    "cmsId": "503302",
-    "latitude": 47.650868,
-    "longitude": -117.425694,
-    "geocoded": true,
-    "geocodeSource": "Nominatim/OpenStreetMap",
-    "uwPartner": false,
-    "dataSources": [
-      "CMS (Nov 2024)"
-    ],
-    "verified": true
-  },
-  {
-    "name": "BHC FAIRFAX HOSPITAL",
-    "address": "10200 NE 132ND ST",
-    "zip": "98034",
-    "state": "WA",
-    "cmsId": "504002",
-    "latitude": 47.719488,
-    "longitude": -122.204408,
-    "geocoded": true,
-    "geocodeSource": "Nominatim/OpenStreetMap",
-    "uwPartner": false,
-    "dataSources": [
-      "CMS (Nov 2024)"
-    ],
-    "verified": true
-  },
-  {
-    "name": "EASTERN STATE HOSPITAL",
-    "address": "850 MAPLE STREET - P O BOX  A",
-    "zip": "99022",
-    "state": "WA",
-    "cmsId": "504004",
-    "latitude": 47.2822,
-    "longitude": -117.1514,
-    "geocoded": true,
-    "geocodeSource": "Manual/Web-verified",
-    "uwPartner": false,
-    "dataSources": [
-      "CMS (Nov 2024)"
-    ],
-    "verified": true
-  },
-  {
-    "name": "LOURDES COUNSELING CENTER",
-    "address": "1175 CARONDELET DRIVE",
-    "zip": "99352",
-    "state": "WA",
-    "cmsId": "504008",
-    "latitude": 46.283925,
-    "longitude": -119.281153,
-    "geocoded": true,
-    "geocodeSource": "Nominatim/OpenStreetMap",
-    "uwPartner": false,
-    "dataSources": [
-      "CMS (Nov 2024)"
-    ],
-    "verified": true
-  },
-  {
-    "name": "NAVOS - INPATIENT SERVICES",
-    "address": "2600 SOUTHWEST HOLDEN",
-    "zip": "98126",
-    "state": "WA",
-    "cmsId": "504009",
-    "latitude": 47.533946,
-    "longitude": -122.366193,
-    "geocoded": true,
-    "geocodeSource": "Nominatim/OpenStreetMap",
-    "uwPartner": false,
-    "dataSources": [
-      "CMS (Nov 2024)"
-    ],
-    "verified": true
-  },
-  {
-    "name": "SMOKEY POINT BEHAVIORAL HOSPITAL",
-    "address": "3955 156TH ST NE",
-    "zip": "98271",
-    "state": "WA",
-    "cmsId": "504012",
-    "latitude": 48.138771,
-    "longitude": -122.179498,
-    "geocoded": true,
-    "geocodeSource": "Nominatim/OpenStreetMap",
-    "uwPartner": false,
-    "dataSources": [
-      "CMS (Nov 2024)"
-    ],
-    "verified": true
-  },
-  {
-    "name": "RAINIER SPRINGS",
-    "address": "2805 NE 129TH ST",
-    "zip": "98686",
-    "state": "WA",
-    "cmsId": "504013",
-    "latitude": 45.714745,
-    "longitude": -122.642202,
-    "geocoded": true,
-    "geocodeSource": "Nominatim/OpenStreetMap",
-    "uwPartner": false,
-    "dataSources": [
-      "CMS (Nov 2024)"
-    ],
-    "verified": true
-  },
-  {
-    "name": "INLAND NORTHWEST BEHAVIORAL HEALTH",
-    "address": "104 W 5TH AVE",
-    "zip": "99204",
-    "state": "WA",
-    "cmsId": "504014",
-    "latitude": 47.651542,
-    "longitude": -117.413653,
-    "geocoded": true,
-    "geocodeSource": "Nominatim/OpenStreetMap",
-    "uwPartner": false,
-    "dataSources": [
-      "CMS (Nov 2024)"
-    ],
-    "verified": true
-  },
-  {
-    "name": "SOUTH SOUND BEHAVIORAL HOSPITAL",
-    "address": "605 WOODLAND SQUARE LOOP SE",
-    "zip": "98503",
-    "state": "WA",
-    "cmsId": "504015",
-    "latitude": 47.042609,
-    "longitude": -122.827988,
-    "geocoded": true,
-    "geocodeSource": "Nominatim/OpenStreetMap",
-    "uwPartner": false,
-    "dataSources": [
-      "CMS (Nov 2024)"
-    ],
-    "verified": true
-  },
-  {
-    "name": "WELLFOUND BEHAVIORAL HEALTH HOSPITAL",
-    "address": "3402 S 19TH ST",
-    "zip": "98405",
-    "state": "WA",
-    "cmsId": "504016",
-    "latitude": 47.242225,
-    "longitude": -122.481206,
-    "geocoded": true,
-    "geocodeSource": "Nominatim/OpenStreetMap",
-    "uwPartner": false,
-    "dataSources": [
-      "CMS (Nov 2024)"
     ],
     "verified": true
   }
