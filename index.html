@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Regional Hospital Stroke Capabilities - WA, AK, ID</title>
+    <title>Regional Hospital Stroke Capabilities - WA, SE AK, N ID</title>
 
     <!-- Leaflet for mapping -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -44,7 +44,7 @@
         .control-panel {
             top: 20px;
             left: 20px;
-            width: 400px;
+            width: 420px;
         }
 
         .stats-panel {
@@ -56,7 +56,7 @@
         .info-panel {
             bottom: 20px;
             left: 20px;
-            width: 450px;
+            width: 500px;
             display: none;
         }
 
@@ -81,6 +81,23 @@
         .app-header p {
             font-size: 11px;
             opacity: 0.9;
+        }
+
+        .search-box {
+            margin-bottom: 16px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #667eea;
         }
 
         .stat-card {
@@ -118,19 +135,6 @@
             align-items: center;
         }
 
-        .filter-section h3 button {
-            font-size: 11px;
-            padding: 2px 8px;
-            background: #e5e7eb;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .filter-section h3 button:hover {
-            background: #d1d5db;
-        }
-
         .checkbox-label {
             display: flex;
             align-items: center;
@@ -151,33 +155,51 @@
 
         .legend-item {
             display: flex;
-            align-items: center;
-            margin-bottom: 8px;
-            font-size: 13px;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            font-size: 12px;
         }
 
         .legend-color {
             width: 18px;
             height: 18px;
             border-radius: 50%;
-            margin-right: 8px;
+            margin-right: 10px;
+            margin-top: 2px;
             border: 2px solid white;
             box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            flex-shrink: 0;
         }
 
-        .info-button {
+        .legend-text {
+            flex: 1;
+        }
+
+        .legend-text strong {
+            display: block;
+            color: #1f2937;
+            margin-bottom: 2px;
+        }
+
+        .legend-text span {
+            color: #6b7280;
+            font-size: 11px;
+        }
+
+        .action-button {
             background: #3b82f6;
             color: white;
             border: none;
-            padding: 8px 16px;
+            padding: 10px 16px;
             border-radius: 6px;
             cursor: pointer;
             font-size: 13px;
-            margin-top: 12px;
             width: 100%;
+            margin-top: 8px;
+            font-weight: 500;
         }
 
-        .info-button:hover {
+        .action-button:hover {
             background: #2563eb;
         }
 
@@ -192,7 +214,7 @@
             font-size: 12px;
         }
 
-        .level-description {
+        .cert-description {
             background: #f9fafb;
             border-left: 4px solid #667eea;
             padding: 12px;
@@ -200,16 +222,27 @@
             border-radius: 4px;
         }
 
-        .level-description h4 {
+        .cert-description h4 {
             font-weight: 600;
             margin-bottom: 4px;
             color: #374151;
+            font-size: 13px;
         }
 
-        .level-description p {
-            font-size: 12px;
+        .cert-description p {
+            font-size: 11px;
             color: #6b7280;
             line-height: 1.5;
+        }
+
+        .disclaimer {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 10px;
+            margin-top: 12px;
+            border-radius: 4px;
+            font-size: 11px;
+            color: #92400e;
         }
     </style>
 </head>
@@ -220,93 +253,99 @@
     <div class="panel control-panel">
         <div class="app-header">
             <h1>Regional Hospital Stroke Capabilities</h1>
-            <p>Washington State, Southeast Alaska, Northern Idaho</p>
+            <p>Washington, Southeast Alaska, Northern Idaho</p>
         </div>
 
+        <!-- Search Box -->
+        <div class="search-box">
+            <input
+                type="text"
+                id="search-input"
+                placeholder="Search hospitals by name or city..."
+                oninput="filterHospitals()"
+            >
+        </div>
+
+        <!-- Stroke Certification Filters -->
         <div class="filter-section">
-            <h3>
-                Special Designations
-                <button onclick="toggleAllFilters('special', true)">All</button>
-            </h3>
+            <h3>Stroke Certifications</h3>
             <label class="checkbox-label">
-                <input type="checkbox" class="filter-special" id="filter-uwPartner" checked>
+                <input type="checkbox" id="filter-csc" checked onchange="renderMarkers()">
+                <strong>CSC</strong> - Comprehensive Stroke Center (2)
+            </label>
+            <label class="checkbox-label">
+                <input type="checkbox" id="filter-tsc" checked onchange="renderMarkers()">
+                <strong>TSC</strong> - Thrombectomy-Capable (3)
+            </label>
+            <label class="checkbox-label">
+                <input type="checkbox" id="filter-psc" checked onchange="renderMarkers()">
+                <strong>PSC</strong> - Primary Stroke Center (2)
+            </label>
+            <label class="checkbox-label">
+                <input type="checkbox" id="filter-asr" checked onchange="renderMarkers()">
+                <strong>ASR</strong> - Acute Stroke Ready (0)
+            </label>
+        </div>
+
+        <!-- Special Designations -->
+        <div class="filter-section">
+            <h3>Special Designations</h3>
+            <label class="checkbox-label">
+                <input type="checkbox" id="filter-uwPartner" checked onchange="renderMarkers()">
                 UW Medicine Telestroke Partners (16)
             </label>
             <label class="checkbox-label">
-                <input type="checkbox" class="filter-special" id="filter-nationalCert" checked>
-                National Stroke Certification
-            </label>
-            <label class="checkbox-label">
-                <input type="checkbox" class="filter-special" id="filter-evt" checked>
-                24/7 Thrombectomy (EVT) Capable
+                <input type="checkbox" id="filter-evt" checked onchange="renderMarkers()">
+                24/7 Thrombectomy (EVT) Capable (5)
             </label>
         </div>
 
-        <div class="filter-section">
-            <h3>
-                WA State Stroke Levels
-                <button onclick="showLevelInfo()">?</button>
-            </h3>
-            <label class="checkbox-label">
-                <input type="checkbox" class="filter-wa-level" id="filter-waLevel1" checked>
-                Level I - Comprehensive
-            </label>
-            <label class="checkbox-label">
-                <input type="checkbox" class="filter-wa-level" id="filter-waLevel2" checked>
-                Level II - Intermediate
-            </label>
-            <label class="checkbox-label">
-                <input type="checkbox" class="filter-wa-level" id="filter-waLevel3" checked>
-                Level III - Primary
-            </label>
-        </div>
-
-        <div class="filter-section">
-            <h3>
-                Hospital Type
-                <button onclick="toggleAllFilters('type', true)">All</button>
-            </h3>
-            <label class="checkbox-label">
-                <input type="checkbox" class="filter-type" id="filter-acute" checked>
-                Acute Care Hospitals
-            </label>
-            <label class="checkbox-label">
-                <input type="checkbox" class="filter-type" id="filter-critical" checked>
-                Critical Access Hospitals
-            </label>
-            <label class="checkbox-label">
-                <input type="checkbox" class="filter-type" id="filter-other" checked>
-                Other (Psychiatric, VA, etc.)
-            </label>
-        </div>
-
+        <!-- Map Legend -->
         <div class="filter-section" style="border-bottom: none;">
-            <h3>Map Legend</h3>
+            <h3>
+                Map Legend
+                <button onclick="showCertInfo()" style="font-size: 11px; padding: 2px 8px; background: #e5e7eb; border: none; border-radius: 4px; cursor: pointer;">?</button>
+            </h3>
             <div class="legend-item">
                 <div class="legend-color" style="background: #dc2626;"></div>
-                <span>Comprehensive Stroke Center</span>
+                <div class="legend-text">
+                    <strong>CSC - Comprehensive</strong>
+                    <span>Highest level, 24/7 EVT</span>
+                </div>
             </div>
             <div class="legend-item">
                 <div class="legend-color" style="background: #ea580c;"></div>
-                <span>Thrombectomy-Capable</span>
+                <div class="legend-text">
+                    <strong>TSC - Thrombectomy-Capable</strong>
+                    <span>Can perform EVT procedures</span>
+                </div>
             </div>
             <div class="legend-item">
                 <div class="legend-color" style="background: #f59e0b;"></div>
-                <span>Primary Stroke Center Plus</span>
-            </div>
-            <div class="legend-item">
-                <div class="legend-color" style="background: #84cc16;"></div>
-                <span>Primary Stroke Center</span>
+                <div class="legend-text">
+                    <strong>PSC - Primary</strong>
+                    <span>Basic stroke care, IV tPA</span>
+                </div>
             </div>
             <div class="legend-item">
                 <div class="legend-color" style="background: #3b82f6;"></div>
-                <span>UW Partner (No National Cert)</span>
+                <div class="legend-text">
+                    <strong>UW Telestroke Partner</strong>
+                    <span>Connected to UW Medicine network</span>
+                </div>
             </div>
             <div class="legend-item">
                 <div class="legend-color" style="background: #6b7280;"></div>
-                <span>Other Hospitals</span>
+                <div class="legend-text">
+                    <strong>Other Hospitals</strong>
+                    <span>No stroke certification</span>
+                </div>
             </div>
         </div>
+
+        <!-- Action Buttons -->
+        <button class="action-button" onclick="exportToCSV()">📊 Export to CSV</button>
+        <button class="action-button" onclick="resetFilters()">🔄 Reset All Filters</button>
     </div>
 
     <!-- Stats Panel -->
@@ -316,41 +355,64 @@
             <div class="stat-label">Total Hospitals Shown</div>
         </div>
         <div class="stat-card">
+            <div class="stat-value" id="stat-csc">0</div>
+            <div class="stat-label">Comprehensive (CSC)</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value" id="stat-tsc">0</div>
+            <div class="stat-label">Thrombectomy-Capable (TSC)</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value" id="stat-psc">0</div>
+            <div class="stat-label">Primary (PSC)</div>
+        </div>
+        <div class="stat-card">
             <div class="stat-value" id="stat-uwPartners">0</div>
             <div class="stat-label">UW Medicine Partners</div>
         </div>
         <div class="stat-card">
-            <div class="stat-value" id="stat-nationalCert">0</div>
-            <div class="stat-label">Nationally Certified</div>
-        </div>
-        <div class="stat-card">
             <div class="stat-value" id="stat-evt">0</div>
-            <div class="stat-label">24/7 Thrombectomy</div>
+            <div class="stat-label">24/7 Thrombectomy (EVT)</div>
+        </div>
+
+        <div class="disclaimer">
+            <strong>Data Sources:</strong><br>
+            CMS Hospital Compare (Nov 2024), UW Medicine Telestroke Program, Joint Commission, DNV. All certifications web-verified. Coordinates: OpenStreetMap.
         </div>
     </div>
 
-    <!-- Info Panel (WA State Levels) -->
+    <!-- Info Panel (Certification Explanations) -->
     <div class="panel info-panel" id="info-panel">
         <button class="close-button" onclick="closeInfo()">Close</button>
-        <h2 style="font-size: 16px; font-weight: 700; margin-bottom: 16px;">Washington State Stroke Designation Levels</h2>
+        <h2 style="font-size: 16px; font-weight: 700; margin-bottom: 16px;">Stroke Certification Levels Explained</h2>
 
-        <div class="level-description">
-            <h4>Level I - Comprehensive Stroke Center</h4>
-            <p>Highest level of stroke care. Provides complete range of services including 24/7 neurosurgical coverage, advanced imaging, endovascular procedures (thrombectomy), and comprehensive rehabilitation. Can treat the most complex stroke cases.</p>
+        <div class="cert-description">
+            <h4>CSC - Comprehensive Stroke Center</h4>
+            <p>Highest level of stroke care. Provides complete range of services including 24/7 neurosurgical coverage, advanced imaging, endovascular thrombectomy (EVT), and comprehensive rehabilitation. Can treat the most complex stroke cases. Certified by Joint Commission or DNV.</p>
         </div>
 
-        <div class="level-description">
-            <h4>Level II - Intermediate Stroke Center</h4>
-            <p>Provides acute stroke care with CT/MRI capabilities, IV thrombolysis (tPA), and stroke unit. May have telemedicine consultation with comprehensive centers. Can stabilize and treat most stroke patients, with transfer protocols for complex cases.</p>
+        <div class="cert-description">
+            <h4>TSC - Thrombectomy-Capable Stroke Center</h4>
+            <p>Advanced stroke care with capability to perform mechanical thrombectomy (EVT) for large vessel occlusions. Has CT/CTA, neuroimaging, and interventional neuroradiology available. Can provide care for complex ischemic strokes requiring endovascular intervention.</p>
         </div>
 
-        <div class="level-description">
-            <h4>Level III - Primary Stroke Center</h4>
-            <p>Basic acute stroke care with CT scanning, IV thrombolysis capability, and emergency protocols. Focuses on rapid assessment and treatment with established transfer agreements for patients requiring higher-level care.</p>
+        <div class="cert-description">
+            <h4>PSC - Primary Stroke Center</h4>
+            <p>Basic comprehensive acute stroke care with CT scanning, IV thrombolysis (tPA) capability, dedicated stroke unit, and standardized protocols. Focuses on rapid assessment and treatment with established transfer agreements for patients requiring higher-level care (EVT, neurosurgery).</p>
+        </div>
+
+        <div class="cert-description">
+            <h4>ASR - Acute Stroke Ready Hospital</h4>
+            <p>Entry-level stroke certification for facilities with basic acute stroke protocols, CT scanning, telemedicine capability, and rapid transfer protocols to higher-level centers. Typically for smaller, rural hospitals.</p>
+        </div>
+
+        <div class="cert-description">
+            <h4>EVT - Endovascular Thrombectomy</h4>
+            <p>24/7 mechanical thrombectomy capability for large vessel occlusions. Requires interventional neuroradiology, advanced imaging (CTA/CTP or MRI/MRA), and specialized neurovascular team. All CSC and TSC certified hospitals have EVT capability.</p>
         </div>
 
         <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid #e5e7eb; font-size: 12px; color: #6b7280;">
-            <strong>Note:</strong> These WA State designations are separate from national stroke center certifications (Joint Commission, DNV). Many hospitals have both state designations and national certifications.
+            <strong>Certifying Bodies:</strong> Joint Commission and DNV are independent accrediting organizations that verify hospitals meet rigorous stroke care standards through on-site reviews and performance metrics.
         </div>
     </div>
 

@@ -1,6 +1,7 @@
 // Complete Hospitals Database and Map Functionality
 
 let HOSPITALS = [];
+let ALL_HOSPITALS = []; // Store all hospitals for search
 let map;
 let markers = [];
 
@@ -9,11 +10,11 @@ fetch('complete_hospitals_geocoded.json')
     .then(response => response.json())
     .then(data => {
         HOSPITALS = data.filter(h => h.latitude && h.longitude);
+        ALL_HOSPITALS = [...HOSPITALS]; // Store copy for search
         console.log(`Loaded ${HOSPITALS.length} hospitals with coordinates`);
         console.log(`Total in database: ${data.length}`);
         initializeMap();
         updateStats();
-        setupFilters();
     })
     .catch(error => {
         console.error('Error loading hospital data:', error);
@@ -22,9 +23,10 @@ fetch('complete_hospitals_geocoded.json')
 
 function initializeMap() {
     console.log('Initializing map...');
+    // Center on Washington State
     map = L.map('map', {
         zoomControl: false
-    }).setView([47.0, -120.5], 6);
+    }).setView([47.5, -120.5], 7);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap contributors',
@@ -37,16 +39,15 @@ function initializeMap() {
 }
 
 function getMarkerColor(hospital) {
-    // National certifications take precedence
-    if (hospital.nationalCertification) {
-        const cert = hospital.nationalCertification.toUpperCase();
-        if (cert.includes('CSC')) return '#dc2626'; // Red - Comprehensive
-        if (cert.includes('TSC') || cert.includes('THROMBECTOMY')) return '#ea580c'; // Orange - Thrombectomy-Capable
-        if (cert.includes('PSC+') || cert.includes('PLUS')) return '#f59e0b'; // Amber - Primary Plus
-        if (cert.includes('PSC')) return '#84cc16'; // Lime - Primary
-    }
+    const certType = hospital.strokeCertificationType;
 
-    // UW Partners without national certification
+    // Stroke certification takes precedence
+    if (certType === 'CSC') return '#dc2626'; // Red - Comprehensive
+    if (certType === 'TSC') return '#ea580c'; // Orange - Thrombectomy-Capable
+    if (certType === 'PSC') return '#f59e0b'; // Amber - Primary
+    if (certType === 'ASR') return '#84cc16'; // Lime - Acute Stroke Ready
+
+    // UW Partners without certification
     if (hospital.uwPartner) return '#3b82f6'; // Blue
 
     // Other hospitals
@@ -54,12 +55,19 @@ function getMarkerColor(hospital) {
 }
 
 function getMarkerSize(hospital) {
-    // National certifications and UW Partners get larger markers
-    if (hospital.nationalCertification) return 10;
+    const certType = hospital.strokeCertificationType;
+
+    // Certified centers get larger markers
+    if (certType === 'CSC') return 12;
+    if (certType === 'TSC') return 11;
+    if (certType === 'PSC') return 10;
+    if (certType === 'ASR') return 9;
+
+    // UW Partners
     if (hospital.uwPartner) return 9;
-    if (hospital.hasELVO) return 9;
-    if (hospital.waStateStrokeLevel === 'I') return 8;
-    return 6;
+
+    // Other hospitals
+    return 7;
 }
 
 function renderMarkers() {
@@ -69,77 +77,53 @@ function renderMarkers() {
 
     // Get filter states
     const filters = {
+        csc: document.getElementById('filter-csc').checked,
+        tsc: document.getElementById('filter-tsc').checked,
+        psc: document.getElementById('filter-psc').checked,
+        asr: document.getElementById('filter-asr').checked,
         uwPartner: document.getElementById('filter-uwPartner').checked,
-        nationalCert: document.getElementById('filter-nationalCert').checked,
         evt: document.getElementById('filter-evt').checked,
-        waLevel1: document.getElementById('filter-waLevel1').checked,
-        waLevel2: document.getElementById('filter-waLevel2').checked,
-        waLevel3: document.getElementById('filter-waLevel3').checked,
-        acute: document.getElementById('filter-acute').checked,
-        critical: document.getElementById('filter-critical').checked,
-        other: document.getElementById('filter-other').checked
     };
 
-    // Filter hospitals with AND logic between categories, OR within categories
+    // Get search term
+    const searchTerm = document.getElementById('search-input').value.toLowerCase();
+
+    // Filter hospitals
     const filtered = HOSPITALS.filter(h => {
-        // IMPORTANT: If ALL 9 filters are checked (default state), show all hospitals
-        if (filters.uwPartner && filters.nationalCert && filters.evt &&
-            filters.waLevel1 && filters.waLevel2 && filters.waLevel3 &&
-            filters.acute && filters.critical && filters.other) {
-            return true;
-        }
-
-        // Check which filters are selected in each category
-        const specialFilters = [filters.uwPartner, filters.nationalCert, filters.evt];
-        const waLevelFilters = [filters.waLevel1, filters.waLevel2, filters.waLevel3];
-        const typeFilters = [filters.acute, filters.critical, filters.other];
-
-        // Check if ANY boxes are checked in each category
-        const anySpecialChecked = specialFilters.some(f => f);
-        const anyWALevelChecked = waLevelFilters.some(f => f);
-        const anyTypeChecked = typeFilters.some(f => f);
-
-        // If no filters selected at all, show everything
-        if (!anySpecialChecked && !anyWALevelChecked && !anyTypeChecked) {
-            return true;
-        }
-
-        // Apply filtering for each category with OR within category
-        let passSpecial = true;
-        let passWALevel = true;
-        let passType = true;
-
-        // Special designation filters (OR within) - only filter if some are checked
-        if (anySpecialChecked) {
-            passSpecial = (filters.uwPartner && h.uwPartner) ||
-                         (filters.nationalCert && h.nationalCertification) ||
-                         (filters.evt && h.hasELVO);
-        }
-
-        // WA State level filters (OR within) - AK/ID hospitals without levels should pass
-        if (anyWALevelChecked) {
-            // Pass if hospital matches a checked WA level OR has no WA level (non-WA hospital)
-            const hasWALevel = h.waStateStrokeLevel && h.waStateStrokeLevel.trim() !== '';
-            if (hasWALevel) {
-                passWALevel = (filters.waLevel1 && h.waStateStrokeLevel === 'I') ||
-                             (filters.waLevel2 && h.waStateStrokeLevel === 'II') ||
-                             (filters.waLevel3 && h.waStateStrokeLevel === 'III');
-            } else {
-                // Hospital has no WA level (AK/ID hospital), always pass WA level filter
-                passWALevel = true;
+        // Search filter
+        if (searchTerm) {
+            const name = (h.name || '').toLowerCase();
+            const address = (h.address || '').toLowerCase();
+            if (!name.includes(searchTerm) && !address.includes(searchTerm)) {
+                return false;
             }
         }
 
-        // Hospital type filters (OR within)
-        if (anyTypeChecked) {
-            const hospType = (h.hospitalType || '').toLowerCase();
-            passType = (filters.acute && hospType.includes('acute care')) ||
-                      (filters.critical && h.isCriticalAccess) ||
-                      (filters.other && !hospType.includes('acute care') && !h.isCriticalAccess);
+        // Certification filters
+        const certType = h.strokeCertificationType;
+        let passCert = false;
+
+        if (filters.csc && certType === 'CSC') passCert = true;
+        if (filters.tsc && certType === 'TSC') passCert = true;
+        if (filters.psc && certType === 'PSC') passCert = true;
+        if (filters.asr && certType === 'ASR') passCert = true;
+
+        // UW Partner filter
+        if (filters.uwPartner && h.uwPartner) passCert = true;
+
+        // EVT filter
+        if (filters.evt && h.hasELVO) passCert = true;
+
+        // If no certification and no special designation, check if "other" would be visible
+        // (i.e., all filters are checked, showing everything)
+        if (!certType && !h.uwPartner && !h.hasELVO) {
+            // Show uncertified hospitals if all filters are on
+            if (filters.csc && filters.tsc && filters.psc && filters.asr && filters.uwPartner && filters.evt) {
+                passCert = true;
+            }
         }
 
-        // AND between categories
-        return passSpecial && passWALevel && passType;
+        return passCert;
     });
 
     console.log(`Showing ${filtered.length} of ${HOSPITALS.length} hospitals`);
@@ -158,20 +142,49 @@ function renderMarkers() {
             fillOpacity: 0.8
         });
 
-        // Popup content
+        // Build popup content
         let popupContent = `
-            <div style="font-family: sans-serif; min-width: 280px;">
+            <div style="font-family: sans-serif; min-width: 300px;">
                 <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 8px; color: ${color};">${hospital.name}</h3>
                 <div style="font-size: 13px; line-height: 1.6;">
-                    <strong>Location:</strong> ${hospital.address || 'Address not available'}, ${hospital.state}<br>
-                    ${hospital.hospitalType ? `<strong>Type:</strong> ${hospital.hospitalType}<br>` : ''}
-                    ${hospital.isCriticalAccess ? `<strong>Critical Access Hospital</strong><br>` : ''}
-                    ${hospital.waStateStrokeLevel ? `<strong>WA State Stroke Level:</strong> ${hospital.waStateStrokeLevel}<br>` : ''}
-                    ${hospital.nationalCertification ? `<strong>National Certification:</strong> ${hospital.nationalCertification}<br>` : ''}
-                    ${hospital.certifyingBody ? `<strong>Certifying Body:</strong> ${hospital.certifyingBody}<br>` : ''}
-                    ${hospital.hasELVO ? `<strong>24/7 Thrombectomy (EVT):</strong> Yes<br>` : ''}
-                    ${hospital.uwPartner ? `<strong>✓ UW Medicine Telestroke Partner</strong><br>` : ''}
-                    ${hospital.emergencyServices ? `<strong>Emergency Services:</strong> Yes<br>` : ''}
+                    <strong>Address:</strong> ${hospital.address || 'Not available'}, ${hospital.state} ${hospital.zip || ''}<br>
+        `;
+
+        // Stroke Certification
+        if (hospital.strokeCertificationType) {
+            const certType = hospital.strokeCertificationType;
+            const certBody = hospital.certifyingBody || '';
+            let certName = '';
+            if (certType === 'CSC') certName = 'Comprehensive Stroke Center';
+            if (certType === 'TSC') certName = 'Thrombectomy-Capable Stroke Center';
+            if (certType === 'PSC') certName = 'Primary Stroke Center';
+            if (certType === 'ASR') certName = 'Acute Stroke Ready';
+
+            popupContent += `<strong>Certification:</strong> ${certName} (${certType})<br>`;
+            if (certBody) {
+                popupContent += `<strong>Certifying Body:</strong> ${certBody}<br>`;
+            }
+        }
+
+        // EVT Capability
+        if (hospital.hasELVO) {
+            popupContent += `<strong>24/7 Thrombectomy (EVT):</strong> Yes<br>`;
+        }
+
+        // UW Partner
+        if (hospital.uwPartner) {
+            popupContent += `<strong style="color: #3b82f6;">✓ UW Medicine Telestroke Partner</strong><br>`;
+        }
+
+        // Coordinates
+        popupContent += `<br><strong>Coordinates:</strong> ${hospital.latitude.toFixed(4)}, ${hospital.longitude.toFixed(4)}<br>`;
+
+        // Data sources
+        if (hospital.dataSources && hospital.dataSources.length > 0) {
+            popupContent += `<br><span style="font-size: 11px; color: #6b7280;">Sources: ${hospital.dataSources.join(', ')}</span>`;
+        }
+
+        popupContent += `
                 </div>
             </div>
         `;
@@ -186,38 +199,114 @@ function renderMarkers() {
 
 function updateStats(filtered = HOSPITALS) {
     document.getElementById('stat-total').textContent = filtered.length;
+    document.getElementById('stat-csc').textContent = filtered.filter(h => h.strokeCertificationType === 'CSC').length;
+    document.getElementById('stat-tsc').textContent = filtered.filter(h => h.strokeCertificationType === 'TSC').length;
+    document.getElementById('stat-psc').textContent = filtered.filter(h => h.strokeCertificationType === 'PSC').length;
     document.getElementById('stat-uwPartners').textContent = filtered.filter(h => h.uwPartner).length;
-    document.getElementById('stat-nationalCert').textContent = filtered.filter(h => h.nationalCertification).length;
     document.getElementById('stat-evt').textContent = filtered.filter(h => h.hasELVO).length;
 }
 
-function setupFilters() {
-    const filterIds = [
-        'filter-uwPartner', 'filter-nationalCert', 'filter-evt',
-        'filter-waLevel1', 'filter-waLevel2', 'filter-waLevel3',
-        'filter-acute', 'filter-critical', 'filter-other'
-    ];
-
-    filterIds.forEach(id => {
-        const element = document.getElementById(id);
-        if (element) {
-            element.addEventListener('change', renderMarkers);
-        }
-    });
-}
-
-function toggleAllFilters(group, state) {
-    const elements = document.querySelectorAll(`.filter-${group}`);
-    elements.forEach(el => {
-        el.checked = state;
-    });
+function filterHospitals() {
     renderMarkers();
 }
 
-function showLevelInfo() {
+function resetFilters() {
+    // Reset all checkboxes
+    document.getElementById('filter-csc').checked = true;
+    document.getElementById('filter-tsc').checked = true;
+    document.getElementById('filter-psc').checked = true;
+    document.getElementById('filter-asr').checked = true;
+    document.getElementById('filter-uwPartner').checked = true;
+    document.getElementById('filter-evt').checked = true;
+
+    // Clear search
+    document.getElementById('search-input').value = '';
+
+    // Re-render
+    renderMarkers();
+}
+
+function showCertInfo() {
     document.getElementById('info-panel').classList.add('active');
 }
 
 function closeInfo() {
     document.getElementById('info-panel').classList.remove('active');
+}
+
+function exportToCSV() {
+    // Get currently filtered hospitals
+    const filters = {
+        csc: document.getElementById('filter-csc').checked,
+        tsc: document.getElementById('filter-tsc').checked,
+        psc: document.getElementById('filter-psc').checked,
+        asr: document.getElementById('filter-asr').checked,
+        uwPartner: document.getElementById('filter-uwPartner').checked,
+        evt: document.getElementById('filter-evt').checked,
+    };
+
+    const searchTerm = document.getElementById('search-input').value.toLowerCase();
+
+    const filtered = HOSPITALS.filter(h => {
+        // Search filter
+        if (searchTerm) {
+            const name = (h.name || '').toLowerCase();
+            const address = (h.address || '').toLowerCase();
+            if (!name.includes(searchTerm) && !address.includes(searchTerm)) {
+                return false;
+            }
+        }
+
+        const certType = h.strokeCertificationType;
+        let passCert = false;
+
+        if (filters.csc && certType === 'CSC') passCert = true;
+        if (filters.tsc && certType === 'TSC') passCert = true;
+        if (filters.psc && certType === 'PSC') passCert = true;
+        if (filters.asr && certType === 'ASR') passCert = true;
+        if (filters.uwPartner && h.uwPartner) passCert = true;
+        if (filters.evt && h.hasELVO) passCert = true;
+
+        if (!certType && !h.uwPartner && !h.hasELVO) {
+            if (filters.csc && filters.tsc && filters.psc && filters.asr && filters.uwPartner && filters.evt) {
+                passCert = true;
+            }
+        }
+
+        return passCert;
+    });
+
+    // Create CSV content
+    let csv = 'Hospital Name,Address,City,State,ZIP,Latitude,Longitude,Stroke Certification,Certifying Body,EVT Capable,UW Partner\n';
+
+    filtered.forEach(h => {
+        const name = (h.name || '').replace(/,/g, ';');
+        const address = (h.address || '').replace(/,/g, ';');
+        const city = address.split(' ').slice(-2).join(' '); // Rough city extraction
+        const state = h.state || '';
+        const zip = h.zip || '';
+        const lat = h.latitude || '';
+        const lon = h.longitude || '';
+        const cert = h.strokeCertificationType || 'None';
+        const certBody = h.certifyingBody || '';
+        const evt = h.hasELVO ? 'Yes' : 'No';
+        const uwPartner = h.uwPartner ? 'Yes' : 'No';
+
+        csv += `"${name}","${address}","${city}","${state}","${zip}",${lat},${lon},"${cert}","${certBody}","${evt}","${uwPartner}"\n`;
+    });
+
+    // Create download link
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    const url = URL.createObjectURL(blob);
+
+    link.setAttribute('href', url);
+    link.setAttribute('download', `stroke_hospitals_${new Date().toISOString().split('T')[0]}.csv`);
+    link.style.visibility = 'hidden';
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    console.log(`Exported ${filtered.length} hospitals to CSV`);
 }
