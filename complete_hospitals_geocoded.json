@@ -1485,7 +1485,7 @@
     "county": "Snohomish",
     "waStateStrokeLevel": "II",
     "waStateCardiacLevel": "I",
-    "hasELVO": true,
+    "hasELVO": false,
     "latitude": 48.000023,
     "longitude": -122.207971,
     "geocoded": true,
@@ -1844,7 +1844,7 @@
     "county": "King",
     "waStateStrokeLevel": "II",
     "waStateCardiacLevel": "I",
-    "hasELVO": false,
+    "hasELVO": true,
     "nationalCertification": "Joint Commission Advanced TSC",
     "certifyingBody": "Joint Commission",
     "certLevel": "Advanced Thrombectomy-Capable Stroke Center",
@@ -2125,7 +2125,8 @@
     "latitude": 47.442694,
     "longitude": -122.214034,
     "geocoded": true,
-    "geocodeSource": "Nominatim/OpenStreetMap"
+    "geocodeSource": "Nominatim/OpenStreetMap",
+    "hasELVO": true
   },
   {
     "name": "ST JOSEPH MEDICAL CENTER",
@@ -2209,7 +2210,7 @@
     "county": "King",
     "waStateStrokeLevel": "II",
     "waStateCardiacLevel": "I",
-    "hasELVO": false,
+    "hasELVO": true,
     "nationalCertification": "DNV PSC+",
     "certifyingBody": "DNV",
     "certLevel": "Primary Plus Stroke Center",
