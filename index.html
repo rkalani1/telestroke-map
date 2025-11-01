@@ -300,10 +300,10 @@
         // --- 3. LAYER & MARKER CREATION ---
 
         function createLayers() {
-            cahLayer = L.layerGroup();
-            acuteCareLayer = L.layerGroup();
-            pscLayer = L.layerGroup();
-            cscLayer = L.layerGroup();
+            cahLayer = L.layerGroup().addTo(map);
+            acuteCareLayer = L.layerGroup().addTo(map);
+            pscLayer = L.layerGroup().addTo(map);
+            cscLayer = L.layerGroup().addTo(map);
 
             const icons = {
                 cah: L.AwesomeMarkers.icon({ icon: 'fa-circle', markerColor: 'blue', prefix: 'fa', iconSize: [20, 30] }),
@@ -316,45 +316,6 @@
             acuteCareData.forEach(h => createMarker(h, icons.acute, acuteCareLayer));
             pscData.forEach(h => createMarker(h, icons.psc, pscLayer));
             cscData.forEach(h => createMarker(h, icons.csc, cscLayer));
-
-            map.addLayer(cahLayer);
-            map.addLayer(acuteCareLayer);
-            map.addLayer(pscLayer);
-            map.addLayer(cscLayer);
-
-            // Add permanent tooltips AFTER markers are on the map
-            cahLayer.eachLayer(marker => {
-                marker.bindTooltip(marker.hospitalData.name, {
-                    permanent: true,
-                    direction: 'right',
-                    className: 'hospital-label',
-                    offset: [10, 0]
-                }).openTooltip();
-            });
-            acuteCareLayer.eachLayer(marker => {
-                marker.bindTooltip(marker.hospitalData.name, {
-                    permanent: true,
-                    direction: 'right',
-                    className: 'hospital-label',
-                    offset: [10, 0]
-                }).openTooltip();
-            });
-            pscLayer.eachLayer(marker => {
-                marker.bindTooltip(marker.hospitalData.name, {
-                    permanent: true,
-                    direction: 'right',
-                    className: 'hospital-label',
-                    offset: [10, 0]
-                }).openTooltip();
-            });
-            cscLayer.eachLayer(marker => {
-                marker.bindTooltip(marker.hospitalData.name, {
-                    permanent: true,
-                    direction: 'right',
-                    className: 'hospital-label',
-                    offset: [10, 0]
-                }).openTooltip();
-            });
         }
 
         function createMarker(hospital, icon, layer) {
@@ -362,12 +323,21 @@
             marker.bindPopup(formatPopup(hospital));
             marker.hospitalData = hospital; // Attach data to marker
 
+            // Add marker to layer first
+            layer.addLayer(marker);
+
+            // Then bind permanent tooltip
+            marker.bindTooltip(hospital.name, {
+                permanent: true,
+                direction: 'right',
+                className: 'hospital-label',
+                offset: [10, 0]
+            });
+
             // Add to filterable list only if it's a CAH or AcuteCare
             if (hospital.type === 'CAH' || hospital.type === 'AcuteCare') {
                  allMapLayers.push(marker);
             }
-
-            layer.addLayer(marker);
         }
 
         // --- 4. POPUP & DISTANCE LOGIC ---
