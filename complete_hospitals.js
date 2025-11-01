@@ -205,12 +205,12 @@ function filterHospitals() {
 }
 
 function resetFilters() {
-    // Reset all checkboxes
-    document.getElementById('filter-csc').checked = true;
-    document.getElementById('filter-tsc').checked = true;
-    document.getElementById('filter-psc').checked = true;
-    document.getElementById('filter-uwPartner').checked = true;
-    document.getElementById('filter-evt').checked = true;
+    // Reset all checkboxes to default (unchecked)
+    document.getElementById('filter-csc').checked = false;
+    document.getElementById('filter-tsc').checked = false;
+    document.getElementById('filter-psc').checked = false;
+    document.getElementById('filter-uwPartner').checked = false;
+    document.getElementById('filter-evt').checked = false;
 
     // Clear search
     document.getElementById('search-input').value = '';
