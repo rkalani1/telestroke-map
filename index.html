@@ -252,11 +252,11 @@
                     <div class="text-xs text-gray-600">Acute Care</div>
                 </div>
                 <div>
-                    <div class="font-bold text-red-600" id="psc-count">9</div>
+                    <div class="font-bold text-red-600" id="psc-count">8</div>
                     <div class="text-xs text-gray-600">Primary Stroke</div>
                 </div>
                 <div>
-                    <div class="font-bold text-purple-600" id="csc-count">15</div>
+                    <div class="font-bold text-purple-600" id="csc-count">16</div>
                     <div class="text-xs text-gray-600">Comprehensive</div>
                 </div>
             </div>
@@ -343,11 +343,11 @@
             </label>
             <label class="checkbox-label">
                 <input type="checkbox" id="filter-psc" checked>
-                <span>Primary Stroke Centers (9)</span>
+                <span>Primary Stroke Centers (8)</span>
             </label>
             <label class="checkbox-label">
                 <input type="checkbox" id="filter-csc" checked>
-                <span>Comprehensive Stroke Centers (15)</span>
+                <span>Comprehensive Stroke Centers (16)</span>
             </label>
         </div>
 
@@ -416,6 +416,7 @@
     <!-- Legend -->
     <div class="legend">
         <h4 class="font-semibold mb-2 text-sm">Legend</h4>
+        <div class="text-xs text-gray-600 mb-2" style="font-style: italic;">Colors show National Certification</div>
         <div class="legend-item">
             <div class="legend-color" style="background-color: #3b82f6;"></div>
             <span class="text-sm">Critical Access Hospital</span>
@@ -436,6 +437,20 @@
             <div class="legend-item">
                 <div style="width: 20px; height: 20px; border-radius: 50%; border: 3px solid #f59e0b; background: white; margin-right: 10px;"></div>
                 <span class="text-sm font-semibold text-amber-600">UW Medicine Partner</span>
+            </div>
+        </div>
+        <div class="mt-2">
+            <div class="legend-item">
+                <div style="padding: 2px 6px; background: #10b981; color: white; font-size: 9px; font-weight: bold; border-radius: 3px; margin-right: 10px;">ELVO</div>
+                <span class="text-xs">24/7 Thrombectomy</span>
+            </div>
+        </div>
+        <div class="mt-3 pt-3 border-t border-gray-300">
+            <div class="text-xs text-gray-600">
+                <strong>Dual Designation System:</strong><br>
+                • National: DNV/Joint Commission certification<br>
+                • WA State: Level I, II, III designation<br>
+                <span style="font-style: italic; font-size: 10px;">Click hospital for both designations</span>
             </div>
         </div>
         <div class="mt-3 pt-3 border-t border-gray-300">
@@ -567,29 +582,27 @@
             { name: 'Yakima Valley Memorial Hospital', type: 'Acute', lat: 46.6021, lng: -120.5059, city: 'Yakima', state: 'WA', affiliation: 'Competitor', strokeLevel: 'PSC', edVolume: 52000, helipad: 'Yes', ct24: 'Yes', uwPartner: false },
             { name: 'PeaceHealth United General Medical Center', type: 'Acute', lat: 48.5032, lng: -122.2362, city: 'Sedro Woolley', state: 'WA', affiliation: 'Competitor', strokeLevel: 'None', edVolume: 15000, helipad: 'Yes', ct24: 'Yes', uwPartner: true },
 
-            // === PRIMARY STROKE CENTERS (9) ===
-            { name: 'MultiCare Good Samaritan Hospital', type: 'PSC', lat: 47.6732, lng: -122.2060, city: 'Puyallup', state: 'WA', affiliation: 'Competitor', strokeLevel: 'PSC', edVolume: 46000, helipad: 'Yes', ct24: 'Yes', uwPartner: false },
-            { name: 'MultiCare Tacoma General Hospital', type: 'PSC', lat: 47.2529, lng: -122.4443, city: 'Tacoma', state: 'WA', affiliation: 'Competitor', strokeLevel: 'PSC', edVolume: 54000, helipad: 'Yes', ct24: 'Yes', uwPartner: false },
-            { name: 'PeaceHealth St. Joseph Medical Center', type: 'PSC', lat: 48.7519, lng: -122.4787, city: 'Bellingham', state: 'WA', affiliation: 'Competitor', strokeLevel: 'PSC', edVolume: 48000, helipad: 'Yes', ct24: 'Yes', uwPartner: true },
-            { name: 'Providence Regional Medical Center Everett', type: 'PSC', lat: 47.9790, lng: -122.2021, city: 'Everett', state: 'WA', affiliation: 'Competitor', strokeLevel: 'PSC', edVolume: 74000, helipad: 'Yes', ct24: 'Yes', uwPartner: false },
-            { name: 'Skagit Regional Health', type: 'PSC', lat: 48.4121, lng: -122.3374, city: 'Mount Vernon', state: 'WA', affiliation: 'TBD', strokeLevel: 'PSC', edVolume: 42000, helipad: 'Yes', ct24: 'Yes', uwPartner: false },
-            { name: 'Swedish Medical Center - Issaquah', type: 'PSC', lat: 47.5301, lng: -122.0326, city: 'Issaquah', state: 'WA', affiliation: 'Competitor', strokeLevel: 'PSC', edVolume: 26000, helipad: 'Yes', ct24: 'Yes', uwPartner: false },
-            { name: 'Virginia Mason Medical Center', type: 'PSC', lat: 47.6101, lng: -122.3321, city: 'Seattle', state: 'WA', affiliation: 'Competitor', strokeLevel: 'PSC', edVolume: 48000, helipad: 'Yes', ct24: 'Yes', uwPartner: false },
-            { name: 'UW Medical Center - Northwest', type: 'PSC', lat: 47.7231, lng: -122.3654, city: 'Seattle', state: 'WA', affiliation: 'UW Medicine', strokeLevel: 'PSC', edVolume: 45000, helipad: 'Yes', ct24: 'Yes', uwPartner: true },
-            { name: 'EvergreenHealth Medical Center', type: 'PSC', lat: 47.6534, lng: -122.2009, city: 'Kirkland', state: 'WA', affiliation: 'UW Medicine', strokeLevel: 'PSC+', edVolume: 48000, helipad: 'Yes', ct24: 'Yes', uwPartner: false },
+            // === PRIMARY STROKE CENTERS (8) ===
+            { name: 'MultiCare Good Samaritan Hospital', type: 'PSC', lat: 47.6732, lng: -122.2060, city: 'Puyallup', state: 'WA', affiliation: 'Competitor', strokeLevel: 'PSC', nationalCert: 'PSC', waStateStroke: 'II', waStateCardiac: 'I', hasELVO: false, edVolume: 46000, helipad: 'Yes', ct24: 'Yes', uwPartner: false },
+            { name: 'PeaceHealth St. Joseph Medical Center', type: 'PSC', lat: 48.7519, lng: -122.4787, city: 'Bellingham', state: 'WA', affiliation: 'Competitor', strokeLevel: 'PSC', nationalCert: 'PSC', waStateStroke: 'II', waStateCardiac: 'I', hasELVO: false, edVolume: 48000, helipad: 'Yes', ct24: 'Yes', uwPartner: true },
+            { name: 'Skagit Regional Health', type: 'PSC', lat: 48.4121, lng: -122.3374, city: 'Mount Vernon', state: 'WA', affiliation: 'TBD', strokeLevel: 'PSC', nationalCert: 'PSC', waStateStroke: 'II', waStateCardiac: 'I', hasELVO: false, edVolume: 42000, helipad: 'Yes', ct24: 'Yes', uwPartner: false },
+            { name: 'Swedish Medical Center - Issaquah', type: 'PSC', lat: 47.5301, lng: -122.0326, city: 'Issaquah', state: 'WA', affiliation: 'Competitor', strokeLevel: 'PSC', nationalCert: 'PSC', waStateStroke: 'II', waStateCardiac: 'I', hasELVO: false, edVolume: 26000, helipad: 'Yes', ct24: 'Yes', uwPartner: false },
+            { name: 'UW Medical Center - Northwest', type: 'PSC', lat: 47.7231, lng: -122.3654, city: 'Seattle', state: 'WA', affiliation: 'UW Medicine', strokeLevel: 'PSC', nationalCert: 'Joint Commission PSC', waStateStroke: 'II', waStateCardiac: 'I', hasELVO: false, edVolume: 45000, helipad: 'Yes', ct24: 'Yes', uwPartner: true },
+            { name: 'EvergreenHealth Medical Center', type: 'CSC', lat: 47.6534, lng: -122.2009, city: 'Kirkland', state: 'WA', affiliation: 'UW Medicine', strokeLevel: 'CSC', nationalCert: 'DNV CSC', waStateStroke: 'II', waStateCardiac: 'I', hasELVO: false, edVolume: 48000, helipad: 'Yes', ct24: 'Yes', uwPartner: false },
 
-            // === COMPREHENSIVE STROKE CENTERS (15) ===
-            { name: 'Harborview Medical Center', type: 'CSC', lat: 47.6052, lng: -122.3204, city: 'Seattle', state: 'WA', affiliation: 'UW Medicine', strokeLevel: 'CSC', edVolume: 95000, helipad: 'Yes', ct24: 'Yes', uwPartner: false },
-            { name: 'UW Medical Center - Montlake', type: 'CSC', lat: 47.6505, lng: -122.3050, city: 'Seattle', state: 'WA', affiliation: 'UW Medicine', strokeLevel: 'CSC', edVolume: 52000, helipad: 'Yes', ct24: 'Yes', uwPartner: false },
-            { name: 'Providence Sacred Heart Medical Center', type: 'CSC', lat: 47.6587, lng: -117.4260, city: 'Spokane', state: 'WA', affiliation: 'Competitor', strokeLevel: 'CSC', edVolume: 70000, helipad: 'Yes', ct24: 'Yes', uwPartner: false },
-            { name: 'MultiCare Tacoma General Hospital', type: 'CSC', lat: 47.2529, lng: -122.4443, city: 'Tacoma', state: 'WA', affiliation: 'Competitor', strokeLevel: 'CSC', edVolume: 56000, helipad: 'Yes', ct24: 'Yes', uwPartner: false },
-            { name: 'Providence Regional Medical Center Everett', type: 'CSC', lat: 47.9790, lng: -122.2021, city: 'Everett', state: 'WA', affiliation: 'Competitor', strokeLevel: 'CSC', edVolume: 76000, helipad: 'Yes', ct24: 'Yes', uwPartner: false },
-            { name: 'Swedish Medical Center - First Hill', type: 'CSC', lat: 47.6092, lng: -122.3224, city: 'Seattle', state: 'WA', affiliation: 'Competitor', strokeLevel: 'CSC', edVolume: 64000, helipad: 'Yes', ct24: 'Yes', uwPartner: false },
-            { name: 'Swedish Medical Center - Cherry Hill', type: 'CSC', lat: 47.6062, lng: -122.3321, city: 'Seattle', state: 'WA', affiliation: 'Competitor', strokeLevel: 'CSC', edVolume: 60000, helipad: 'Yes', ct24: 'Yes', uwPartner: false },
-            { name: 'PeaceHealth Southwest Medical Center', type: 'CSC', lat: 45.6387, lng: -122.5007, city: 'Vancouver', state: 'WA', affiliation: 'Competitor', strokeLevel: 'CSC', edVolume: 67000, helipad: 'Yes', ct24: 'Yes', uwPartner: false },
-            { name: 'Kadlec Regional Medical Center', type: 'CSC', lat: 46.2396, lng: -119.1372, city: 'Richland', state: 'WA', affiliation: 'Competitor', strokeLevel: 'CSC', edVolume: 50000, helipad: 'Yes', ct24: 'Yes', uwPartner: false },
-            { name: 'Virginia Mason Franciscan Health - St. Joseph Medical Center', type: 'CSC', lat: 47.2529, lng: -122.4443, city: 'Tacoma', state: 'WA', affiliation: 'Competitor', strokeLevel: 'CSC', edVolume: 46000, helipad: 'Yes', ct24: 'Yes', uwPartner: false },
-            { name: 'CHI Franciscan - St. Joseph Medical Center', type: 'CSC', lat: 47.2529, lng: -122.4443, city: 'Tacoma', state: 'WA', affiliation: 'Competitor', strokeLevel: 'CSC', edVolume: 44000, helipad: 'Yes', ct24: 'Yes', uwPartner: false },
+            // === COMPREHENSIVE STROKE CENTERS (16) ===
+            // *** = Washington State Level I Stroke + 24/7 ELVO (thrombectomy) capability
+            { name: 'Harborview Medical Center', type: 'CSC', lat: 47.6052, lng: -122.3204, city: 'Seattle', state: 'WA', affiliation: 'UW Medicine', strokeLevel: 'CSC', nationalCert: 'Joint Commission CSC', waStateStroke: 'I', waStateCardiac: 'I', hasELVO: true, edVolume: 95000, helipad: 'Yes', ct24: 'Yes', uwPartner: false },
+            { name: 'Swedish Medical Center - Cherry Hill', type: 'CSC', lat: 47.6062, lng: -122.3321, city: 'Seattle', state: 'WA', affiliation: 'Competitor', strokeLevel: 'CSC', nationalCert: 'DNV CSC', waStateStroke: 'I', waStateCardiac: 'I', hasELVO: true, edVolume: 60000, helipad: 'Yes', ct24: 'Yes', uwPartner: false },
+            { name: 'Virginia Mason Medical Center', type: 'CSC', lat: 47.6101, lng: -122.3321, city: 'Seattle', state: 'WA', affiliation: 'Competitor', strokeLevel: 'CSC', nationalCert: 'CSC', waStateStroke: 'I', waStateCardiac: 'I', hasELVO: true, edVolume: 48000, helipad: 'Yes', ct24: 'Yes', uwPartner: false },
+            { name: 'Providence Sacred Heart Medical Center', type: 'CSC', lat: 47.6587, lng: -117.4260, city: 'Spokane', state: 'WA', affiliation: 'Competitor', strokeLevel: 'CSC', nationalCert: 'CSC', waStateStroke: 'I', waStateCardiac: 'I', hasELVO: true, edVolume: 70000, helipad: 'Yes', ct24: 'Yes', uwPartner: false },
+            { name: 'MultiCare Tacoma General Hospital', type: 'CSC', lat: 47.2529, lng: -122.4443, city: 'Tacoma', state: 'WA', affiliation: 'Competitor', strokeLevel: 'CSC', nationalCert: 'DNV CSC', waStateStroke: 'I', waStateCardiac: 'I', hasELVO: true, edVolume: 56000, helipad: 'Yes', ct24: 'Yes', uwPartner: false },
+            { name: 'St. Joseph Medical Center', type: 'CSC', lat: 47.2490, lng: -122.4410, city: 'Tacoma', state: 'WA', affiliation: 'Competitor', strokeLevel: 'CSC', nationalCert: 'CSC', waStateStroke: 'I', waStateCardiac: 'I', hasELVO: true, edVolume: 46000, helipad: 'Yes', ct24: 'Yes', uwPartner: false },
+            { name: 'Providence Regional Medical Center Everett', type: 'CSC', lat: 47.9790, lng: -122.2021, city: 'Everett', state: 'WA', affiliation: 'Competitor', strokeLevel: 'CSC', nationalCert: 'CSC', waStateStroke: 'II', waStateCardiac: 'I', hasELVO: true, edVolume: 76000, helipad: 'Yes', ct24: 'Yes', uwPartner: false },
+            { name: 'PeaceHealth Southwest Medical Center', type: 'CSC', lat: 45.6387, lng: -122.5007, city: 'Vancouver', state: 'WA', affiliation: 'Competitor', strokeLevel: 'CSC', nationalCert: 'CSC', waStateStroke: 'I', waStateCardiac: 'I', hasELVO: false, edVolume: 67000, helipad: 'Yes', ct24: 'Yes', uwPartner: false },
+            { name: 'Swedish Medical Center - First Hill', type: 'CSC', lat: 47.6092, lng: -122.3224, city: 'Seattle', state: 'WA', affiliation: 'Competitor', strokeLevel: 'CSC', nationalCert: 'CSC', waStateStroke: 'II', waStateCardiac: 'II', hasELVO: false, edVolume: 64000, helipad: 'Yes', ct24: 'Yes', uwPartner: false },
+            { name: 'UW Medical Center - Montlake', type: 'CSC', lat: 47.6505, lng: -122.3050, city: 'Seattle', state: 'WA', affiliation: 'UW Medicine', strokeLevel: 'CSC', nationalCert: 'CSC', waStateStroke: 'III', waStateCardiac: 'I', hasELVO: false, edVolume: 52000, helipad: 'Yes', ct24: 'Yes', uwPartner: false },
+            { name: 'Kadlec Regional Medical Center', type: 'CSC', lat: 46.2396, lng: -119.1372, city: 'Richland', state: 'WA', affiliation: 'Competitor', strokeLevel: 'CSC', nationalCert: 'CSC', waStateStroke: 'II', waStateCardiac: 'I', hasELVO: false, edVolume: 50000, helipad: 'Yes', ct24: 'Yes', uwPartner: false },
             { name: 'Kootenai Health', type: 'CSC', lat: 47.6788, lng: -116.7805, city: 'Coeur d\'Alene', state: 'ID', affiliation: 'TBD', strokeLevel: 'CSC', edVolume: 54000, helipad: 'Yes', ct24: 'Yes', uwPartner: false },
             { name: 'Providence St. Mary Medical Center', type: 'CSC', lat: 47.2529, lng: -122.4443, city: 'Walla Walla', state: 'WA', affiliation: 'Competitor', strokeLevel: 'CSC', edVolume: 24000, helipad: 'Yes', ct24: 'Yes', uwPartner: false },
             { name: 'Alaska Regional Hospital', type: 'CSC', lat: 61.1508, lng: -149.9778, city: 'Anchorage', state: 'AK', affiliation: 'TBD', strokeLevel: 'CSC', edVolume: 48000, helipad: 'Yes', ct24: 'Yes', uwPartner: false },
@@ -715,20 +728,35 @@
             });
 
             const uwPartnerBadge = hospital.uwPartner ? '<span style="background: #f59e0b; color: white; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: bold; margin-left: 8px;">★ UW PARTNER</span>' : '';
+            const elvoIndicator = hospital.hasELVO ? '<span style="background: #10b981; color: white; padding: 2px 6px; border-radius: 3px; font-size: 10px; font-weight: bold; margin-left: 4px;">24/7 ELVO</span>' : '';
+
+            // Build certification display
+            let certificationHTML = '';
+            if (hospital.nationalCert || hospital.waStateStroke) {
+                certificationHTML = `
+                    <tr><td colspan="2" style="padding: 8px 0 4px 0; border-top: 1px solid #e5e7eb;"><strong>Stroke Center Designation:</strong></td></tr>
+                    ${hospital.nationalCert ? `<tr><td style="padding: 3px 10px 3px 0; padding-left: 12px;">National Certification:</td><td style="padding: 3px 0;"><strong>${hospital.nationalCert}</strong>${elvoIndicator}</td></tr>` : ''}
+                    ${hospital.waStateStroke ? `<tr><td style="padding: 3px 10px 3px 0; padding-left: 12px;">WA State Stroke Level:</td><td style="padding: 3px 0;"><strong>Level ${hospital.waStateStroke}</strong></td></tr>` : ''}
+                    ${hospital.waStateCardiac ? `<tr><td style="padding: 3px 10px 3px 0; padding-left: 12px;">WA State Cardiac Level:</td><td style="padding: 3px 0;">Level ${hospital.waStateCardiac}</td></tr>` : ''}
+                `;
+            } else {
+                certificationHTML = `<tr><td style="padding: 3px 10px 3px 0;"><strong>State Stroke Level:</strong></td><td style="padding: 3px 0;">${hospital.strokeLevel}</td></tr>`;
+            }
 
             const marker = L.marker([hospital.lat, hospital.lng], { icon: customIcon })
                 .bindPopup(`
-                    <div style="min-width: 250px;">
+                    <div style="min-width: 280px;">
                         <h3 style="margin: 0 0 10px 0; font-size: 16px; font-weight: bold;">${hospital.name}${uwPartnerBadge}</h3>
                         <table style="width: 100%; font-size: 13px;">
                             <tr><td style="padding: 3px 10px 3px 0;"><strong>Type:</strong></td><td style="padding: 3px 0;">${hospital.type}</td></tr>
                             <tr><td style="padding: 3px 10px 3px 0;"><strong>Location:</strong></td><td style="padding: 3px 0;">${hospital.city}, ${hospital.state}</td></tr>
                             <tr><td style="padding: 3px 10px 3px 0;"><strong>Distance to HMC:</strong></td><td style="padding: 3px 0;">${hospital.distanceToHMC} miles</td></tr>
                             ${hospital.uwPartner ? '<tr><td style="padding: 3px 10px 3px 0;"><strong>Network:</strong></td><td style="padding: 3px 0; color: #f59e0b; font-weight: bold;">UW Medicine Telestroke Partner</td></tr>' : ''}
-                            <tr><td style="padding: 3px 10px 3px 0;"><strong>State Stroke Level:</strong></td><td style="padding: 3px 0;">${hospital.strokeLevel}</td></tr>
-                            <tr><td style="padding: 3px 10px 3px 0;"><strong>Annual ED Volume:</strong></td><td style="padding: 3px 0;">${hospital.edVolume.toLocaleString()}</td></tr>
-                            <tr><td style="padding: 3px 10px 3px 0;"><strong>Helipad:</strong></td><td style="padding: 3px 0;">${hospital.helipad}</td></tr>
-                            <tr><td style="padding: 3px 10px 3px 0;"><strong>24/7 CT:</strong></td><td style="padding: 3px 0;">${hospital.ct24}</td></tr>
+                            ${certificationHTML}
+                            <tr><td colspan="2" style="padding: 8px 0 4px 0; border-top: 1px solid #e5e7eb;"><strong>Operational Data:</strong></td></tr>
+                            <tr><td style="padding: 3px 10px 3px 0; padding-left: 12px;">Annual ED Volume:</td><td style="padding: 3px 0;">${hospital.edVolume.toLocaleString()}</td></tr>
+                            <tr><td style="padding: 3px 10px 3px 0; padding-left: 12px;">Helipad:</td><td style="padding: 3px 0;">${hospital.helipad}</td></tr>
+                            <tr><td style="padding: 3px 10px 3px 0; padding-left: 12px;">24/7 CT:</td><td style="padding: 3px 0;">${hospital.ct24}</td></tr>
                         </table>
                     </div>
                 `);
