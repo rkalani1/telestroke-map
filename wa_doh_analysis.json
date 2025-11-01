@@ -1,0 +1,334 @@
+{
+  "level_1_count": 7,
+  "level_2_count": 34,
+  "level_3_count": 44,
+  "not_participating_count": 2,
+  "matched_asr": [
+    {
+      "wa_name": "Snoqualmie Valley Hospital",
+      "db_name": "SNOQUALMIE VALLEY HOSPITAL",
+      "city": "Snoqualmie",
+      "current_cert": null,
+      "should_be": "ASR (Level III)",
+      "in_database": true
+    },
+    {
+      "wa_name": "St. Elizabeth Hospital",
+      "db_name": "ST ELIZABETH HOSPITAL",
+      "city": "Enumclaw",
+      "current_cert": null,
+      "should_be": "ASR (Level III)",
+      "in_database": true
+    },
+    {
+      "wa_name": "East Adams Rural Hospital",
+      "db_name": "EAST ADAMS RURAL HOSPITAL",
+      "city": "Ritzville",
+      "current_cert": null,
+      "should_be": "ASR (Level III)",
+      "in_database": true
+    },
+    {
+      "wa_name": "Ferry County Memorial Hospital",
+      "db_name": "FERRY COUNTY MEMORIAL HOSPITAL",
+      "city": "Republic",
+      "current_cert": null,
+      "should_be": "ASR (Level III)",
+      "in_database": true
+    },
+    {
+      "wa_name": "Othello Community Hospital",
+      "db_name": "OTHELLO COMMUNITY HOSPITAL",
+      "city": "Othello",
+      "current_cert": null,
+      "should_be": "ASR (Level III)",
+      "in_database": true
+    },
+    {
+      "wa_name": "Multicare Valley Hospital",
+      "db_name": "MULTICARE VALLEY HOSPITAL",
+      "city": "Spokane Valley",
+      "current_cert": null,
+      "should_be": "ASR (Level III)",
+      "in_database": true
+    },
+    {
+      "wa_name": "Whitman Hospital",
+      "db_name": "WHITMAN HOSPITAL AND MEDICAL CENTER",
+      "city": "Colfax",
+      "current_cert": null,
+      "should_be": "ASR (Level III)",
+      "in_database": true
+    },
+    {
+      "wa_name": "Lincoln Hospital District 3",
+      "db_name": "LINCOLN HOSPITAL",
+      "city": "Davenport",
+      "current_cert": null,
+      "should_be": "ASR (Level III)",
+      "in_database": true
+    },
+    {
+      "wa_name": "Providence Mount Carmel Hospital",
+      "db_name": "PROVIDENCE MOUNT CARMEL HOSPITAL",
+      "city": "Colville",
+      "current_cert": null,
+      "should_be": "ASR (Level III)",
+      "in_database": true
+    },
+    {
+      "wa_name": "Pullman Regional Hospital",
+      "db_name": "PULLMAN REGIONAL HOSPITAL",
+      "city": "Pullman",
+      "current_cert": "ASR",
+      "should_be": "ASR (Level III)",
+      "in_database": true
+    },
+    {
+      "wa_name": "Cascade Valley Hospital",
+      "db_name": "CASCADE VALLEY HOSPITAL",
+      "city": "Arlington",
+      "current_cert": null,
+      "should_be": "ASR (Level III)",
+      "in_database": true
+    },
+    {
+      "wa_name": "Cascade Medical Center",
+      "db_name": "CASCADE MEDICAL CENTER",
+      "city": "Leavenworth",
+      "current_cert": null,
+      "should_be": "ASR (Level III)",
+      "in_database": true
+    },
+    {
+      "wa_name": "Columbia Basin Hospital",
+      "db_name": "COLUMBIA BASIN HOSPITAL",
+      "city": "Ephrata",
+      "current_cert": null,
+      "should_be": "ASR (Level III)",
+      "in_database": true
+    },
+    {
+      "wa_name": "Coulee Medical Center",
+      "db_name": "COULEE MEDICAL CENTER",
+      "city": "Grand Coulee",
+      "current_cert": null,
+      "should_be": "ASR (Level III)",
+      "in_database": true
+    },
+    {
+      "wa_name": "Lake Chelan Community Hospital",
+      "db_name": "LAKE CHELAN COMMUNITY HOSPITAL",
+      "city": "Chelan",
+      "current_cert": null,
+      "should_be": "ASR (Level III)",
+      "in_database": true
+    },
+    {
+      "wa_name": "North Valley Hospital",
+      "db_name": "NORTH VALLEY HOSPITAL",
+      "city": "Tonasket",
+      "current_cert": null,
+      "should_be": "ASR (Level III)",
+      "in_database": true
+    },
+    {
+      "wa_name": "Three Rivers Hospital",
+      "db_name": "THREE RIVERS HOSPITAL",
+      "city": "Brewster",
+      "current_cert": null,
+      "should_be": "ASR (Level III)",
+      "in_database": true
+    },
+    {
+      "wa_name": "Quincy Valley Medical Center",
+      "db_name": "VALLEY MEDICAL CENTER",
+      "city": "Quincy",
+      "current_cert": "TSC",
+      "should_be": "ASR (Level III)",
+      "in_database": true
+    },
+    {
+      "wa_name": "Mason General Hospital",
+      "db_name": "MASON GENERAL HOSPITAL & FAMILY OF CLINICS",
+      "city": "Shelton",
+      "current_cert": null,
+      "should_be": "ASR (Level III)",
+      "in_database": true
+    },
+    {
+      "wa_name": "Olympic Medical Center",
+      "db_name": "OLYMPIC MEDICAL CENTER",
+      "city": "Port Angeles",
+      "current_cert": "ASR",
+      "should_be": "ASR (Level III)",
+      "in_database": true
+    },
+    {
+      "wa_name": "Jefferson Healthcare",
+      "db_name": "JEFFERSON HEALTHCARE",
+      "city": "Port Townsend",
+      "current_cert": null,
+      "should_be": "ASR (Level III)",
+      "in_database": true
+    },
+    {
+      "wa_name": "Dayton General Hospital",
+      "db_name": "DAYTON GENERAL HOSPITAL",
+      "city": "Dayton",
+      "current_cert": null,
+      "should_be": "ASR (Level III)",
+      "in_database": true
+    },
+    {
+      "wa_name": "Prosser Memorial Hospital",
+      "db_name": "PROSSER MEMORIAL HOSPITAL",
+      "city": "Prosser",
+      "current_cert": null,
+      "should_be": "ASR (Level III)",
+      "in_database": true
+    },
+    {
+      "wa_name": "Ocean Beach Hospital",
+      "db_name": "OCEAN BEACH HOSPITAL",
+      "city": "Ilwaco",
+      "current_cert": null,
+      "should_be": "ASR (Level III)",
+      "in_database": true
+    },
+    {
+      "wa_name": "Skyline Hospital",
+      "db_name": "SKYLINE HOSPITAL",
+      "city": "White Salmon",
+      "current_cert": null,
+      "should_be": "ASR (Level III)",
+      "in_database": true
+    },
+    {
+      "wa_name": "St. John Medical Center (PeaceHealth)",
+      "db_name": "PEACEHEALTH ST JOHN MEDICAL CENTER",
+      "city": "Longview",
+      "current_cert": null,
+      "should_be": "ASR (Level III)",
+      "in_database": true
+    },
+    {
+      "wa_name": "Summit Pacific Medical Center",
+      "db_name": "SUMMIT PACIFIC MEDICAL CENTER",
+      "city": "McCleary",
+      "current_cert": null,
+      "should_be": "ASR (Level III)",
+      "in_database": true
+    },
+    {
+      "wa_name": "Providence Centralia Hospital",
+      "db_name": "PROVIDENCE CENTRALIA HOSPITAL",
+      "city": "Centralia",
+      "current_cert": null,
+      "should_be": "ASR (Level III)",
+      "in_database": true
+    },
+    {
+      "wa_name": "St. Clare Hospital",
+      "db_name": "ST CLARE HOSPITAL",
+      "city": "Lakewood",
+      "current_cert": null,
+      "should_be": "ASR (Level III)",
+      "in_database": true
+    },
+    {
+      "wa_name": "Willapa Harbor Hospital",
+      "db_name": "WILLAPA HARBOR HOSPITAL",
+      "city": "South Bend",
+      "current_cert": null,
+      "should_be": "ASR (Level III)",
+      "in_database": true
+    }
+  ],
+  "unmatched_asr": [
+    {
+      "wa_name": "Swedish Ballard",
+      "city": "Seattle",
+      "county": "King",
+      "in_database": false
+    },
+    {
+      "wa_name": "UW Medical Center - Montlake",
+      "city": "Seattle",
+      "county": "King",
+      "in_database": false
+    },
+    {
+      "wa_name": "Odessa Memorial Hospital",
+      "city": "Odessa",
+      "county": "Lincoln",
+      "in_database": false
+    },
+    {
+      "wa_name": "Garfield County Hospital District",
+      "city": "Pomeroy",
+      "county": "Garfield",
+      "in_database": false
+    },
+    {
+      "wa_name": "Newport Hospital and Health Services",
+      "city": "Newport",
+      "county": "Pend Oreille",
+      "in_database": false
+    },
+    {
+      "wa_name": "Providence St. Joseph's Hospital",
+      "city": "Chewelah",
+      "county": "Stevens",
+      "in_database": false
+    },
+    {
+      "wa_name": "United General Hospital",
+      "city": "Sedro Woolley",
+      "county": "Skagit",
+      "in_database": false
+    },
+    {
+      "wa_name": "Valley General Hospital",
+      "city": "Monroe",
+      "county": "Snohomish",
+      "in_database": false
+    },
+    {
+      "wa_name": "Whidbey General Hospital",
+      "city": "Coupeville",
+      "county": "Island",
+      "in_database": false
+    },
+    {
+      "wa_name": "Mid-Valley Hospital",
+      "city": "Omak",
+      "county": "Okanogan",
+      "in_database": false
+    },
+    {
+      "wa_name": "Forks Hospital",
+      "city": "Forks",
+      "county": "Clallam",
+      "in_database": false
+    },
+    {
+      "wa_name": "Sunnyside Community Hospital",
+      "city": "Sunnyside",
+      "county": "Yakima",
+      "in_database": false
+    },
+    {
+      "wa_name": "Klickitat Valley Health",
+      "city": "Goldendale",
+      "county": "Klickitat",
+      "in_database": false
+    },
+    {
+      "wa_name": "Morton General Hospital",
+      "city": "Morton",
+      "county": "Lewis",
+      "in_database": false
+    }
+  ]
+}

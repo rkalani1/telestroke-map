@@ -174,12 +174,13 @@
     "geocodeSource": "Nominatim/OpenStreetMap",
     "uwPartner": false,
     "dataSources": [
-      "CMS (Nov 2024)"
+      "CMS (Nov 2024)",
+      "Idaho DOH (2025)"
     ],
     "verified": true,
-    "strokeCertificationType": null,
-    "certifyingBody": null,
-    "certificationDetails": null,
+    "strokeCertificationType": "ASR",
+    "certifyingBody": "Idaho DOH",
+    "certificationDetails": "Idaho Level III Stroke Center (Time Sensitive Emergency)",
     "hasELVO": false
   },
   {
@@ -294,12 +295,13 @@
     "geocodeSource": "Nominatim/OpenStreetMap",
     "uwPartner": false,
     "dataSources": [
-      "CMS (Nov 2024)"
+      "CMS (Nov 2024)",
+      "Idaho DOH (2025)"
     ],
     "verified": true,
-    "strokeCertificationType": null,
-    "certifyingBody": null,
-    "certificationDetails": null,
+    "strokeCertificationType": "ASR",
+    "certifyingBody": "Idaho DOH",
+    "certificationDetails": "Idaho TSE Level 3 Stroke Certification (February 2025)",
     "hasELVO": false
   },
   {
@@ -314,12 +316,13 @@
     "geocodeSource": "Nominatim/OpenStreetMap",
     "uwPartner": false,
     "dataSources": [
-      "CMS (Nov 2024)"
+      "CMS (Nov 2024)",
+      "Idaho DOH (2025)"
     ],
     "verified": true,
-    "strokeCertificationType": null,
-    "certifyingBody": null,
-    "certificationDetails": null,
+    "strokeCertificationType": "ASR",
+    "certifyingBody": "Idaho DOH",
+    "certificationDetails": "Idaho TSE Level 3 Stroke Certification (February 2025)",
     "hasELVO": false
   },
   {
@@ -1444,12 +1447,13 @@
     "hasELVO": false,
     "dataSources": [
       "CMS (Nov 2024)",
-      "WA DOH (Oct 2024)"
+      "WA DOH (Oct 2024)",
+      "WA DOH (2024)"
     ],
     "verified": true,
-    "strokeCertificationType": null,
-    "certifyingBody": null,
-    "certificationDetails": null
+    "strokeCertificationType": "ASR",
+    "certifyingBody": "Washington State DOH",
+    "certificationDetails": "Washington State Level III Stroke Center"
   },
   {
     "name": "PROSSER MEMORIAL HOSPITAL",
@@ -1485,12 +1489,13 @@
     "uwPartner": true,
     "dataSources": [
       "CMS (Nov 2024)",
-      "UW Medicine Telestroke Program"
+      "UW Medicine Telestroke Program",
+      "WA DOH (2024)"
     ],
     "verified": true,
-    "strokeCertificationType": null,
-    "certifyingBody": null,
-    "certificationDetails": null,
+    "strokeCertificationType": "ASR",
+    "certifyingBody": "Washington State DOH",
+    "certificationDetails": "Washington State Level III Stroke Center",
     "hasELVO": false
   },
   {

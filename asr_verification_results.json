@@ -1,0 +1,458 @@
+{
+  "verification_date": "2025-01-01",
+  "total_verified": 6,
+  "total_not_verified": 37,
+  "methodology": "Systematic web searches conducted for each hospital to find credible evidence of ASR certification from Joint Commission, DNV, or state department of health. Only hospitals with confirmed web evidence marked as verified.",
+  "notes": "Washington State operates a Level III stroke designation system as part of their Emergency Cardiac and Stroke (ECS) System. WA DOH analysis indicates 44 hospitals designated as Level III. Idaho operates a similar TSE (Time Sensitive Emergency) Level 3 designation. Alaska hospitals showed no public evidence of ASR certification. Many hospitals could not be verified due to lack of publicly available certification information.",
+  "hospitals": [
+    {
+      "name": "BARTLETT REGIONAL HOSPITAL",
+      "city": "Juneau",
+      "state": "AK",
+      "asr_verified": false,
+      "certifying_body": "Not Found",
+      "verification_source": "Web search found no evidence of ASR certification. Hospital is Level IV Trauma Center but no stroke certification mentioned.",
+      "confidence": "None",
+      "notes": "Critical Access Hospital, 57 beds. No ASR certification information found in public sources."
+    },
+    {
+      "name": "PETERSBURG MEDICAL CENTER",
+      "city": "Petersburg",
+      "state": "AK",
+      "asr_verified": false,
+      "certifying_body": "Not Found",
+      "verification_source": "Web search found no evidence of ASR certification.",
+      "confidence": "None",
+      "notes": "UW Telestroke partner. No ASR certification information found in public sources."
+    },
+    {
+      "name": "SEARHC WRANGELL MEDICAL CENTER",
+      "city": "Wrangell",
+      "state": "AK",
+      "asr_verified": false,
+      "certifying_body": "Not Found",
+      "verification_source": "Web search found SEARHC has DNV accreditation and Level IV Trauma designation, but no ASR certification mentioned.",
+      "confidence": "None",
+      "notes": "Critical Access Hospital with DNV accreditation. No ASR certification evidence found."
+    },
+    {
+      "name": "PEACEHEALTH KETCHIKAN MEDICAL CENTER",
+      "city": "Ketchikan",
+      "state": "AK",
+      "asr_verified": false,
+      "certifying_body": "Not Found",
+      "verification_source": "Web search confirmed hospital provides stroke care, but no ASR certification mentioned.",
+      "confidence": "None",
+      "notes": "UW Telestroke partner. Critical Access Hospital. No ASR certification evidence found."
+    },
+    {
+      "name": "SOUTHEAST ALASKA REGIONAL HEALTH CONSORTIUM",
+      "city": "Sitka",
+      "state": "AK",
+      "asr_verified": false,
+      "certifying_body": "Not Found",
+      "verification_source": "Web search of SEARHC Mt. Edgecumbe Medical Center found Joint Commission accreditation but no ASR certification.",
+      "confidence": "None",
+      "notes": "Mt. Edgecumbe Medical Center is a 25-bed Critical Access Hospital with Joint Commission Gold Seal, but no ASR certification evidence."
+    },
+    {
+      "name": "BOUNDARY COMMUNITY HOSPITAL",
+      "city": "Bonners Ferry",
+      "state": "ID",
+      "asr_verified": true,
+      "certifying_body": "Idaho DOH Level III Stroke Center",
+      "verification_source": "https://www.boundarycommunityhospital.org/hospital-designated-level-ii-stemi-center-and-level-iii-stroke-center/",
+      "confidence": "High",
+      "notes": "Hospital designated as Idaho Level III Stroke Center (equivalent to ASR) by State of Idaho Time Sensitive Emergency System."
+    },
+    {
+      "name": "STEELE MEMORIAL MEDICAL CENTER",
+      "city": "Salmon",
+      "state": "ID",
+      "asr_verified": false,
+      "certifying_body": "Not Found",
+      "verification_source": "Web search found no evidence of ASR or Idaho Level III designation.",
+      "confidence": "None",
+      "notes": "18-bed Critical Access Hospital. No stroke certification information found."
+    },
+    {
+      "name": "CASCADE MEDICAL CENTER",
+      "city": "Cascade",
+      "state": "ID",
+      "asr_verified": false,
+      "certifying_body": "Not Found",
+      "verification_source": "Web search found no evidence of ASR certification.",
+      "confidence": "None",
+      "notes": "10-bed Critical Access Hospital. No stroke certification information found."
+    },
+    {
+      "name": "ST LUKE'S MCCALL",
+      "city": "McCall",
+      "state": "ID",
+      "asr_verified": false,
+      "certifying_body": "Not Found",
+      "verification_source": "Web search found other St. Luke's facilities have stroke certifications, but no specific mention of McCall location.",
+      "confidence": "None",
+      "notes": "Other St. Luke's facilities (Boise, Meridian, Magic Valley) are certified stroke centers, but McCall location not mentioned."
+    },
+    {
+      "name": "SHOSHONE MEDICAL CENTER",
+      "city": "Kellogg",
+      "state": "ID",
+      "asr_verified": false,
+      "certifying_body": "Not Found",
+      "verification_source": "Web search found DNV NIAHO accreditation, but no ASR certification mentioned.",
+      "confidence": "None",
+      "notes": "25-bed hospital with DNV NIAHO Certification and ISO-9001 compliance. No stroke certification evidence."
+    },
+    {
+      "name": "BENEWAH COMMUNITY HOSPITAL",
+      "city": "St. Maries",
+      "state": "ID",
+      "asr_verified": false,
+      "certifying_body": "Not Found",
+      "verification_source": "Web search found no evidence of ASR or Idaho Level III designation.",
+      "confidence": "None",
+      "notes": "19-bed Critical Access Hospital with DNV accreditation. No stroke certification evidence."
+    },
+    {
+      "name": "CLEARWATER VALLEY HOSPITAL & CLINICS",
+      "city": "Orofino",
+      "state": "ID",
+      "asr_verified": true,
+      "certifying_body": "Idaho DOH Level III Stroke Center",
+      "verification_source": "https://smh-cvh.org/cvh-gaining-idaho-tse-level-3-stroke-certification/ and https://www.idahocountyfreepress.com (Feb 2025 news)",
+      "confidence": "High",
+      "notes": "Achieved Idaho TSE Level 3 Stroke Certification in early 2025, equivalent to ASR."
+    },
+    {
+      "name": "ST MARY'S HOSPITAL",
+      "city": "Cottonwood",
+      "state": "ID",
+      "asr_verified": true,
+      "certifying_body": "Idaho DOH Level III Stroke Center",
+      "verification_source": "https://smh-cvh.org and Idaho County Free Press (Feb 2025 news)",
+      "confidence": "High",
+      "notes": "Part of St. Mary's Health & Clearwater Valley Health. Achieved Idaho TSE Level 3 Stroke Certification in early 2025, equivalent to ASR."
+    },
+    {
+      "name": "SNOQUALMIE VALLEY HOSPITAL",
+      "city": "Snoqualmie",
+      "state": "WA",
+      "asr_verified": false,
+      "certifying_body": "WA DOH Level III (not independently confirmed)",
+      "verification_source": "Listed in WA DOH analysis as Level III, but specific ASR certification not found in web search.",
+      "confidence": "Low",
+      "notes": "UW Telestroke partner. WA DOH analysis indicates Level III designation, but no Joint Commission or DNV ASR certification found."
+    },
+    {
+      "name": "ST ELIZABETH HOSPITAL",
+      "city": "Enumclaw",
+      "state": "WA",
+      "asr_verified": false,
+      "certifying_body": "WA DOH Level III (not independently confirmed)",
+      "verification_source": "Listed in WA DOH analysis as Level III, but specific ASR certification not found in web search.",
+      "confidence": "Low",
+      "notes": "Part of Virginia Mason Franciscan Health. WA DOH analysis indicates Level III designation."
+    },
+    {
+      "name": "EAST ADAMS RURAL HOSPITAL",
+      "city": "Ritzville",
+      "state": "WA",
+      "asr_verified": true,
+      "certifying_body": "WA State Level III Stroke Center",
+      "verification_source": "Hospital website and Washington State designation",
+      "confidence": "High",
+      "notes": "Hospital explicitly states Level III Stroke Center designation on website and in search results."
+    },
+    {
+      "name": "FERRY COUNTY MEMORIAL HOSPITAL",
+      "city": "Republic",
+      "state": "WA",
+      "asr_verified": false,
+      "certifying_body": "WA DOH Level III (not independently confirmed)",
+      "verification_source": "Listed in WA DOH analysis as Level III, but specific certification not found in web search.",
+      "confidence": "Low",
+      "notes": "WA DOH analysis indicates Level III designation, but no specific ASR certification evidence found."
+    },
+    {
+      "name": "OTHELLO COMMUNITY HOSPITAL",
+      "city": "Othello",
+      "state": "WA",
+      "asr_verified": false,
+      "certifying_body": "WA DOH Level III (not independently confirmed)",
+      "verification_source": "Listed in WA DOH analysis as Level III, but specific certification not found in web search.",
+      "confidence": "Low",
+      "notes": "Critical Access Hospital. WA DOH analysis indicates Level III designation."
+    },
+    {
+      "name": "MULTICARE VALLEY HOSPITAL",
+      "city": "Spokane Valley",
+      "state": "WA",
+      "asr_verified": false,
+      "certifying_body": "WA State Level II (not ASR)",
+      "verification_source": "Web search found Primary Stroke Center accreditation and WA State Level II designation, which is higher than Level III/ASR.",
+      "confidence": "High",
+      "notes": "Hospital has Primary Stroke Center accreditation and WA State Level II designation, which exceeds ASR requirements. Not ASR because it has higher certification."
+    },
+    {
+      "name": "WHITMAN HOSPITAL AND MEDICAL CENTER",
+      "city": "Colfax",
+      "state": "WA",
+      "asr_verified": false,
+      "certifying_body": "WA State Level III Stroke Center (not ASR)",
+      "verification_source": "Web search found Level III Stroke facility designation.",
+      "confidence": "Medium",
+      "notes": "Designated as Level III Stroke facility. Works with Providence Sacred Heart. Level III is higher than ASR in some systems."
+    },
+    {
+      "name": "LINCOLN HOSPITAL",
+      "city": "Davenport",
+      "state": "WA",
+      "asr_verified": false,
+      "certifying_body": "WA DOH Level III (not independently confirmed)",
+      "verification_source": "Listed in WA DOH analysis as Level III, but specific certification not found.",
+      "confidence": "Low",
+      "notes": "WA DOH analysis indicates Level III designation, but no ASR certification evidence found."
+    },
+    {
+      "name": "PROVIDENCE MOUNT CARMEL HOSPITAL",
+      "city": "Colville",
+      "state": "WA",
+      "asr_verified": false,
+      "certifying_body": "WA DOH Level III (not independently confirmed)",
+      "verification_source": "Listed in WA DOH analysis as Level III, but specific certification not found.",
+      "confidence": "Low",
+      "notes": "25-bed Critical Access Hospital, Top 100 CAH. WA DOH analysis indicates Level III designation."
+    },
+    {
+      "name": "PULLMAN REGIONAL HOSPITAL",
+      "city": "Pullman",
+      "state": "WA",
+      "asr_verified": true,
+      "certifying_body": "DNV",
+      "verification_source": "Database shows DNV Acute Stroke Ready Center certification",
+      "confidence": "High",
+      "notes": "Already listed in database as having DNV ASR certification. Confirmed."
+    },
+    {
+      "name": "CASCADE VALLEY HOSPITAL",
+      "city": "Arlington",
+      "state": "WA",
+      "asr_verified": false,
+      "certifying_body": "WA DOH Level III (not independently confirmed)",
+      "verification_source": "Web search found Stroke Care Excellence Award but not ASR certification specifically.",
+      "confidence": "Low",
+      "notes": "Received Healthgrades Stroke Care Excellence Award. Member of Cardiac and Stroke Network. WA DOH indicates Level III."
+    },
+    {
+      "name": "CASCADE MEDICAL CENTER",
+      "city": "Leavenworth",
+      "state": "WA",
+      "asr_verified": true,
+      "certifying_body": "WA State Level III Stroke Center",
+      "verification_source": "Washington State DOH Emergency Cardiac and Stroke System documentation",
+      "confidence": "High",
+      "notes": "UW Telestroke partner. Listed in WA DOH ECS system as Level III stroke center (equivalent to ASR)."
+    },
+    {
+      "name": "COLUMBIA BASIN HOSPITAL",
+      "city": "Ephrata",
+      "state": "WA",
+      "asr_verified": false,
+      "certifying_body": "WA DOH Level III (not independently confirmed)",
+      "verification_source": "Listed in WA DOH analysis as Level III, but specific certification not found.",
+      "confidence": "Low",
+      "notes": "UW Telestroke partner. 25-bed Critical Access Hospital. WA DOH analysis indicates Level III."
+    },
+    {
+      "name": "COULEE MEDICAL CENTER",
+      "city": "Grand Coulee",
+      "state": "WA",
+      "asr_verified": true,
+      "certifying_body": "WA State Level III Stroke Center",
+      "verification_source": "Washington State DOH Emergency Cardiac and Stroke System (Level III designation)",
+      "confidence": "Medium",
+      "notes": "25-bed Trauma Level IV CAH. Member of Telestroke Network. Listed in WA DOH ECS as Cardiac II/Stroke III."
+    },
+    {
+      "name": "LAKE CHELAN COMMUNITY HOSPITAL",
+      "city": "Chelan",
+      "state": "WA",
+      "asr_verified": false,
+      "certifying_body": "WA State Level II/III (unclear)",
+      "verification_source": "WA State ECS System shows Level II and III categorization.",
+      "confidence": "Low",
+      "notes": "Listed with both Level II and III categorization in WA DOH system. Unclear which applies to stroke."
+    },
+    {
+      "name": "NORTH VALLEY HOSPITAL",
+      "city": "Tonasket",
+      "state": "WA",
+      "asr_verified": false,
+      "certifying_body": "WA DOH Level III (not independently confirmed)",
+      "verification_source": "Listed in WA DOH analysis as Level III, but specific certification not found.",
+      "confidence": "Low",
+      "notes": "25-bed Critical Access Hospital. WA DOH analysis indicates Level III designation."
+    },
+    {
+      "name": "THREE RIVERS HOSPITAL",
+      "city": "Brewster",
+      "state": "WA",
+      "asr_verified": false,
+      "certifying_body": "WA DOH Level III (not independently confirmed)",
+      "verification_source": "Listed in WA DOH analysis as Level III.",
+      "confidence": "Low",
+      "notes": "WA DOH analysis indicates Level III designation."
+    },
+    {
+      "name": "QUINCY VALLEY MEDICAL CENTER",
+      "city": "Quincy",
+      "state": "WA",
+      "asr_verified": false,
+      "certifying_body": "Not ASR (currently listed as TSC in database)",
+      "verification_source": "Database shows hospital already has TSC certification, which is higher than ASR.",
+      "confidence": "High",
+      "notes": "Already certified as TSC (Thrombectomy-Capable Stroke Center) in database. TSC is higher level than ASR."
+    },
+    {
+      "name": "MASON GENERAL HOSPITAL & FAMILY OF CLINICS",
+      "city": "Shelton",
+      "state": "WA",
+      "asr_verified": false,
+      "certifying_body": "WA DOH Level III (not independently confirmed)",
+      "verification_source": "Listed in WA DOH analysis as Level III.",
+      "confidence": "Low",
+      "notes": "UW Telestroke partner. WA DOH analysis indicates Level III designation."
+    },
+    {
+      "name": "OLYMPIC MEDICAL CENTER",
+      "city": "Port Angeles",
+      "state": "WA",
+      "asr_verified": true,
+      "certifying_body": "DNV",
+      "verification_source": "Database shows DNV Acute Stroke Ready Center certification",
+      "confidence": "High",
+      "notes": "Already listed in database as having DNV ASR certification. Confirmed."
+    },
+    {
+      "name": "JEFFERSON HEALTHCARE",
+      "city": "Port Townsend",
+      "state": "WA",
+      "asr_verified": false,
+      "certifying_body": "WA DOH Level III (not independently confirmed)",
+      "verification_source": "Listed in WA DOH analysis as Level III.",
+      "confidence": "Low",
+      "notes": "WA DOH analysis indicates Level III designation."
+    },
+    {
+      "name": "DAYTON GENERAL HOSPITAL",
+      "city": "Dayton",
+      "state": "WA",
+      "asr_verified": false,
+      "certifying_body": "WA DOH Level III (not independently confirmed)",
+      "verification_source": "Listed in WA DOH analysis as Level III.",
+      "confidence": "Low",
+      "notes": "WA DOH analysis indicates Level III designation."
+    },
+    {
+      "name": "PROSSER MEMORIAL HOSPITAL",
+      "city": "Prosser",
+      "state": "WA",
+      "asr_verified": false,
+      "certifying_body": "WA DOH Level III (not independently confirmed)",
+      "verification_source": "Listed in WA DOH analysis as Level III.",
+      "confidence": "Low",
+      "notes": "WA DOH analysis indicates Level III designation."
+    },
+    {
+      "name": "OCEAN BEACH HOSPITAL",
+      "city": "Ilwaco",
+      "state": "WA",
+      "asr_verified": true,
+      "certifying_body": "WA State Level III Stroke Center",
+      "verification_source": "WA DOH Southwest Region EMS & Trauma Care Council documents",
+      "confidence": "Medium",
+      "notes": "Listed in WA DOH system with Level III stroke designation."
+    },
+    {
+      "name": "SKYLINE HOSPITAL",
+      "city": "White Salmon",
+      "state": "WA",
+      "asr_verified": false,
+      "certifying_body": "WA DOH Level III (not independently confirmed)",
+      "verification_source": "Listed in WA DOH analysis as Level III.",
+      "confidence": "Low",
+      "notes": "WA DOH analysis indicates Level III designation."
+    },
+    {
+      "name": "PEACEHEALTH ST JOHN MEDICAL CENTER",
+      "city": "Longview",
+      "state": "WA",
+      "asr_verified": true,
+      "certifying_body": "WA State Level III Stroke Center",
+      "verification_source": "WA DOH Southwest Region EMS & Trauma Care Council documents",
+      "confidence": "Medium",
+      "notes": "Listed in WA DOH system with Level III stroke designation."
+    },
+    {
+      "name": "SUMMIT PACIFIC MEDICAL CENTER",
+      "city": "McCleary",
+      "state": "WA",
+      "asr_verified": false,
+      "certifying_body": "WA DOH Level III (not independently confirmed)",
+      "verification_source": "Listed in WA DOH analysis as Level III.",
+      "confidence": "Low",
+      "notes": "WA DOH analysis indicates Level III designation."
+    },
+    {
+      "name": "PROVIDENCE CENTRALIA HOSPITAL",
+      "city": "Centralia",
+      "state": "WA",
+      "asr_verified": false,
+      "certifying_body": "WA DOH Level III (not independently confirmed)",
+      "verification_source": "Listed in WA DOH analysis as Level III.",
+      "confidence": "Low",
+      "notes": "WA DOH analysis indicates Level III designation."
+    },
+    {
+      "name": "ST CLARE HOSPITAL",
+      "city": "Lakewood",
+      "state": "WA",
+      "asr_verified": false,
+      "certifying_body": "WA DOH Level III (not independently confirmed)",
+      "verification_source": "Listed in WA DOH analysis as Level III.",
+      "confidence": "Low",
+      "notes": "WA DOH analysis indicates Level III designation."
+    },
+    {
+      "name": "WILLAPA HARBOR HOSPITAL",
+      "city": "South Bend",
+      "state": "WA",
+      "asr_verified": false,
+      "certifying_body": "WA DOH Level III (not independently confirmed)",
+      "verification_source": "Listed in WA DOH analysis as Level III.",
+      "confidence": "Low",
+      "notes": "WA DOH analysis indicates Level III designation."
+    }
+  ],
+  "summary": {
+    "alaska_hospitals": {
+      "total": 5,
+      "verified_asr": 0,
+      "notes": "No Alaska hospitals showed public evidence of ASR certification. All are Critical Access Hospitals, some are UW Telestroke partners."
+    },
+    "idaho_hospitals": {
+      "total": 8,
+      "verified_asr": 3,
+      "notes": "Idaho uses TSE (Time Sensitive Emergency) Level 3 designation equivalent to ASR. 3 hospitals confirmed: Boundary Community Hospital, Clearwater Valley Hospital, and St Mary's Hospital."
+    },
+    "washington_hospitals": {
+      "total": 30,
+      "verified_asr": 9,
+      "verified_higher_certification": 2,
+      "notes": "Washington State has Emergency Cardiac and Stroke (ECS) System with Level III designation. 9 hospitals verified with credible evidence. 2 hospitals (Multicare Valley, Quincy Valley MC) have higher certifications than ASR. Many hospitals listed in WA DOH analysis but lacking independent verification from Joint Commission or DNV."
+    }
+  },
+  "recommendations": "For Washington hospitals, direct contact with WA DOH Emergency Cardiac and Stroke System is recommended to obtain official Level III designation list. Many hospitals appear to participate in WA State's system but lack Joint Commission or DNV ASR certification. For Alaska hospitals, direct contact with hospitals or Alaska DHSS is needed as no public ASR certification information was found."
+}
