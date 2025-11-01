@@ -201,9 +201,6 @@ function renderMarkers() {
             popupContent += `<span style="font-size: 11px; color: #6b7280;">Estimates: 60 mph ground, 150 mph air</span><br>`;
         }
 
-        // Coordinates
-        popupContent += `<br><strong>Coordinates:</strong> ${hospital.latitude.toFixed(4)}, ${hospital.longitude.toFixed(4)}<br>`;
-
         // Data sources
         if (hospital.dataSources && hospital.dataSources.length > 0) {
             popupContent += `<br><span style="font-size: 11px; color: #6b7280;">Sources: ${hospital.dataSources.join(', ')}</span>`;
@@ -1313,7 +1310,6 @@ function showHospitalDetail(hospital) {
                 <div style="font-size: 13px; line-height: 1.8;">
                     <strong>Address:</strong> ${hospital.address}<br>
                     <strong>City/State:</strong> ${hospital.state} ${hospital.zip}<br>
-                    <strong>Coordinates:</strong> ${hospital.latitude.toFixed(6)}, ${hospital.longitude.toFixed(6)}<br>
                     <strong>CMS ID:</strong> ${hospital.cmsId}
                 </div>
             </div>
