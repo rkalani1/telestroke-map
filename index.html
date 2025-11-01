@@ -268,7 +268,10 @@
 
         <!-- Stroke Certification Filters -->
         <div class="filter-section">
-            <h3>Stroke Certifications</h3>
+            <h3>
+                Stroke Certifications
+                <button onclick="clearCertFilters()" style="font-size: 11px; padding: 2px 8px; background: #e5e7eb; border: none; border-radius: 4px; cursor: pointer; margin-left: 8px;">Clear All</button>
+            </h3>
             <label class="checkbox-label">
                 <input type="checkbox" id="filter-csc" checked onchange="renderMarkers()">
                 <strong>CSC</strong> - Comprehensive Stroke Center
@@ -281,15 +284,14 @@
                 <input type="checkbox" id="filter-psc" checked onchange="renderMarkers()">
                 <strong>PSC</strong> - Primary Stroke Center
             </label>
-            <label class="checkbox-label">
-                <input type="checkbox" id="filter-asr" checked onchange="renderMarkers()">
-                <strong>ASR</strong> - Acute Stroke Ready
-            </label>
         </div>
 
         <!-- Special Designations -->
         <div class="filter-section">
-            <h3>Special Designations</h3>
+            <h3>
+                Special Designations
+                <button onclick="clearSpecialFilters()" style="font-size: 11px; padding: 2px 8px; background: #e5e7eb; border: none; border-radius: 4px; cursor: pointer; margin-left: 8px;">Clear All</button>
+            </h3>
             <label class="checkbox-label">
                 <input type="checkbox" id="filter-uwPartner" checked onchange="renderMarkers()">
                 UW Medicine Telestroke Partners
@@ -399,11 +401,6 @@
         <div class="cert-description">
             <h4>PSC - Primary Stroke Center</h4>
             <p>Basic comprehensive acute stroke care with CT scanning, IV thrombolysis (tPA) capability, dedicated stroke unit, and standardized protocols. Focuses on rapid assessment and treatment with established transfer agreements for patients requiring higher-level care (EVT, neurosurgery).</p>
-        </div>
-
-        <div class="cert-description">
-            <h4>ASR - Acute Stroke Ready Hospital</h4>
-            <p>Entry-level stroke certification for facilities with basic acute stroke protocols, CT scanning, telemedicine capability, and rapid transfer protocols to higher-level centers. Typically for smaller, rural hospitals.</p>
         </div>
 
         <div class="cert-description">
