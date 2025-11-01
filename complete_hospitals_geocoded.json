@@ -225,7 +225,11 @@
       "CMS (Nov 2024)",
       "UW Medicine Telestroke Program"
     ],
-    "verified": true
+    "verified": true,
+    "latitude": 56.8125,
+    "longitude": -132.9561,
+    "geocoded": true,
+    "geocodeSource": "Manual (verified location)"
   },
   {
     "name": "SEARHC WRANGELL MEDICAL CENTER-CAH",
@@ -474,10 +478,10 @@
       "UW Medicine Telestroke Program"
     ],
     "verified": true,
-    "latitude": 49.210883,
-    "longitude": -122.917225,
+    "latitude": 46.4165,
+    "longitude": -117.0262,
     "geocoded": true,
-    "geocodeSource": "Nominatim/OpenStreetMap"
+    "geocodeSource": "Manual (Lewiston, ID verified)"
   },
   {
     "name": "ST LUKE'S REGIONAL MEDICAL CENTER",
@@ -1437,7 +1441,11 @@
       "CMS (Nov 2024)",
       "UW Medicine Telestroke Program"
     ],
-    "verified": true
+    "verified": true,
+    "latitude": 47.6505,
+    "longitude": -122.305,
+    "geocoded": true,
+    "geocodeSource": "Manual (UW Medical Center main campus)"
   },
   {
     "name": "HIGHLINE MEDICAL CENTER",
@@ -2534,10 +2542,9 @@
     "hospitalType": "Critical Access Hospitals",
     "isCriticalAccess": true,
     "emergencyServices": true,
-    "uwPartner": true,
+    "uwPartner": false,
     "dataSources": [
-      "CMS (Nov 2024)",
-      "UW Medicine Telestroke Program"
+      "CMS (Nov 2024)"
     ],
     "verified": true,
     "latitude": 48.2776,
@@ -3233,9 +3240,10 @@
     "hospitalType": "Critical Access Hospitals",
     "isCriticalAccess": true,
     "emergencyServices": true,
-    "uwPartner": false,
+    "uwPartner": true,
     "dataSources": [
-      "CMS (Nov 2024)"
+      "CMS (Nov 2024)",
+      "UW Medicine Telestroke Program"
     ],
     "verified": true,
     "latitude": 48.526651,

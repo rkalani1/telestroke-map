@@ -80,27 +80,47 @@ function renderMarkers() {
         other: document.getElementById('filter-other').checked
     };
 
-    // Filter hospitals
+    // Filter hospitals with AND logic between categories, OR within categories
     const filtered = HOSPITALS.filter(h => {
-        // Special designation filters
-        if (filters.uwPartner && h.uwPartner) return true;
-        if (filters.nationalCert && h.nationalCertification) return true;
-        if (filters.evt && h.hasELVO) return true;
+        // Check if any filters are selected in each category
+        const specialSelected = filters.uwPartner || filters.nationalCert || filters.evt;
+        const waLevelSelected = filters.waLevel1 || filters.waLevel2 || filters.waLevel3;
+        const typeSelected = filters.acute || filters.critical || filters.other;
 
-        // WA State level filters
-        if (filters.waLevel1 && h.waStateStrokeLevel === 'I') return true;
-        if (filters.waLevel2 && h.waStateStrokeLevel === 'II') return true;
-        if (filters.waLevel3 && h.waStateStrokeLevel === 'III') return true;
+        // If no filters selected at all, show everything
+        if (!specialSelected && !waLevelSelected && !typeSelected) {
+            return true;
+        }
 
-        // Hospital type filters
-        const hospType = (h.hospitalType || '').toLowerCase();
-        if (filters.acute && hospType.includes('acute care')) return true;
-        if (filters.critical && h.isCriticalAccess) return true;
-        if (filters.other && !hospType.includes('acute care') && !h.isCriticalAccess) return true;
+        // Check each category (OR within category)
+        let passSpecial = !specialSelected; // Pass if category not active
+        let passWALevel = !waLevelSelected;
+        let passType = !typeSelected;
 
-        // Show all if no filters selected
-        const anyFilterSelected = Object.values(filters).some(v => v);
-        return !anyFilterSelected;
+        // Special designation filters (OR)
+        if (specialSelected) {
+            passSpecial = (filters.uwPartner && h.uwPartner) ||
+                         (filters.nationalCert && h.nationalCertification) ||
+                         (filters.evt && h.hasELVO);
+        }
+
+        // WA State level filters (OR)
+        if (waLevelSelected) {
+            passWALevel = (filters.waLevel1 && h.waStateStrokeLevel === 'I') ||
+                         (filters.waLevel2 && h.waStateStrokeLevel === 'II') ||
+                         (filters.waLevel3 && h.waStateStrokeLevel === 'III');
+        }
+
+        // Hospital type filters (OR)
+        if (typeSelected) {
+            const hospType = (h.hospitalType || '').toLowerCase();
+            passType = (filters.acute && hospType.includes('acute care')) ||
+                      (filters.critical && h.isCriticalAccess) ||
+                      (filters.other && !hospType.includes('acute care') && !h.isCriticalAccess);
+        }
+
+        // AND between categories
+        return passSpecial && passWALevel && passType;
     });
 
     console.log(`Showing ${filtered.length} of ${HOSPITALS.length} hospitals`);
