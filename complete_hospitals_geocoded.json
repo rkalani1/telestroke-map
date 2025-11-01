@@ -634,7 +634,7 @@
     "hasELVO": false
   },
   {
-    "name": "ST JOSEPH HOSPITAL",
+    "name": "PEACEHEALTH ST JOSEPH MEDICAL CENTER",
     "address": "2901 SQUALICUM PARKWAY",
     "zip": "98225",
     "state": "WA",
@@ -2132,7 +2132,7 @@
     "address": "1901 South Union Avenue",
     "zip": "98405",
     "state": "WA",
-    "cmsId": "500007",
+    "cmsId": "500129",
     "latitude": 47.2356,
     "longitude": -122.4754,
     "geocoded": true,
