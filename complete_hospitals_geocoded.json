@@ -13,7 +13,11 @@
     "dataSources": [
       "CMS (Nov 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "PETERSBURG MEDICAL CENTER",
@@ -30,7 +34,11 @@
       "CMS (Nov 2024)",
       "UW Medicine Telestroke Program"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "SEARHC WRANGELL MEDICAL CENTER-CAH",
@@ -46,7 +54,11 @@
     "dataSources": [
       "CMS (Nov 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "PEACEHEALTH KETCHIKAN MEDICAL CENTER",
@@ -63,7 +75,11 @@
       "CMS (Nov 2024)",
       "UW Medicine Telestroke Program"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "SOUTHEAST ALASKA REGIONAL HEALTH CONSORTIUM",
@@ -79,7 +95,11 @@
     "dataSources": [
       "CMS (Nov 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "ST JOSEPH REGIONAL MEDICAL CENTER",
@@ -96,7 +116,11 @@
       "CMS (Nov 2024)",
       "UW Medicine Telestroke Program"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "KOOTENAI HEALTH",
@@ -112,7 +136,11 @@
     "dataSources": [
       "CMS (Nov 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "NORTHWEST SPECIALTY HOSPITAL",
@@ -128,7 +156,11 @@
     "dataSources": [
       "CMS (Nov 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "BOUNDARY COMMUNITY HOSPITAL",
@@ -144,7 +176,11 @@
     "dataSources": [
       "CMS (Nov 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "STEELE MEMORIAL MEDICAL CENTER",
@@ -160,7 +196,11 @@
     "dataSources": [
       "CMS (Nov 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "CASCADE MEDICAL CENTER",
@@ -176,7 +216,11 @@
     "dataSources": [
       "CMS (Nov 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "ST LUKE'S MCCALL",
@@ -192,7 +236,11 @@
     "dataSources": [
       "CMS (Nov 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "SHOSHONE MEDICAL CENTER",
@@ -208,7 +256,11 @@
     "dataSources": [
       "CMS (Nov 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "BENEWAH COMMUNITY HOSPITAL",
@@ -224,7 +276,11 @@
     "dataSources": [
       "CMS (Nov 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "CLEARWATER VALLEY HOSPITAL & CLINICS",
@@ -240,7 +296,11 @@
     "dataSources": [
       "CMS (Nov 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "ST MARY'S HOSPITAL",
@@ -256,7 +316,11 @@
     "dataSources": [
       "CMS (Nov 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "PROVIDENCE ST MARY MEDICAL CENTER",
@@ -272,7 +336,11 @@
     "dataSources": [
       "CMS (Nov 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "SKAGIT VALLEY HOSPITAL",
@@ -290,7 +358,10 @@
       "CMS (Nov 2024)",
       "WA DOH (Oct 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": "PSC",
+    "certifyingBody": "DNV",
+    "certificationDetails": "DNV Primary Stroke Center"
   },
   {
     "name": "VIRGINIA MASON MEDICAL CENTER",
@@ -330,7 +401,10 @@
       "WA DOH (Oct 2024)",
       "UW Medicine Telestroke Program"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null
   },
   {
     "name": "UNIVERSITY OF WASHINGTON MEDICAL CTR",
@@ -347,7 +421,11 @@
       "CMS (Nov 2024)",
       "UW Medicine Telestroke Program"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "HIGHLINE MEDICAL CENTER",
@@ -363,7 +441,11 @@
     "dataSources": [
       "CMS (Nov 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": "PSC",
+    "certifyingBody": "Joint Commission",
+    "certificationDetails": "Joint Commission Primary Stroke Center",
+    "hasELVO": false
   },
   {
     "name": "PROVIDENCE REGIONAL MEDICAL CENTER EVERETT",
@@ -400,7 +482,11 @@
     "dataSources": [
       "CMS (Nov 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "CONFLUENCE HEALTH HOSPITAL",
@@ -417,7 +503,11 @@
       "CMS (Nov 2024)",
       "UW Medicine Telestroke Program"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "PROVIDENCE CENTRALIA HOSPITAL",
@@ -435,7 +525,10 @@
       "CMS (Nov 2024)",
       "WA DOH (Oct 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null
   },
   {
     "name": "ST CLARE HOSPITAL",
@@ -451,7 +544,11 @@
     "dataSources": [
       "CMS (Nov 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "PROVIDENCE ST PETER HOSPITAL",
@@ -467,7 +564,11 @@
     "dataSources": [
       "CMS (Nov 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": "PSC",
+    "certifyingBody": "Primary Stroke Center",
+    "certificationDetails": "Certified Primary Stroke Center - Largest stroke program in WA",
+    "hasELVO": false
   },
   {
     "name": "SWEDISH MEDICAL CENTER / CHERRY HILL",
@@ -503,7 +604,11 @@
     "dataSources": [
       "CMS (Nov 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "SWEDISH MEDICAL CENTER",
@@ -519,7 +624,11 @@
     "dataSources": [
       "CMS (Nov 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "ST JOSEPH HOSPITAL",
@@ -536,7 +645,11 @@
       "CMS (Nov 2024)",
       "UW Medicine Telestroke Program"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "GRAYS HARBOR COMMUNITY HOSPITAL",
@@ -554,7 +667,10 @@
       "CMS (Nov 2024)",
       "WA DOH (Oct 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null
   },
   {
     "name": "SAMARITAN HOSPITAL",
@@ -572,7 +688,10 @@
       "CMS (Nov 2024)",
       "WA DOH (Oct 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null
   },
   {
     "name": "YAKIMA VALLEY MEMORIAL",
@@ -588,7 +707,11 @@
     "dataSources": [
       "CMS (Nov 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "ASTRIA TOPPENISH HOSPITAL",
@@ -604,7 +727,11 @@
     "dataSources": [
       "CMS (Nov 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "HARRISON MEDICAL CENTER",
@@ -620,7 +747,11 @@
     "dataSources": [
       "CMS (Nov 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": "PSC",
+    "certifyingBody": "Joint Commission",
+    "certificationDetails": "Joint Commission Primary Stroke Center",
+    "hasELVO": false
   },
   {
     "name": "PEACEHEALTH ST JOHN MEDICAL CENTER",
@@ -636,7 +767,11 @@
     "dataSources": [
       "CMS (Nov 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "DEACONESS MEDICAL CENTER",
@@ -652,7 +787,11 @@
     "dataSources": [
       "CMS (Nov 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": "PSC",
+    "certifyingBody": "DNV",
+    "certificationDetails": "DNV Primary Stroke Center",
+    "hasELVO": false
   },
   {
     "name": "PEACEHEALTH SOUTHWEST MEDICAL CENTER",
@@ -709,7 +848,11 @@
     "dataSources": [
       "CMS (Nov 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "TRIOS HEALTH",
@@ -726,7 +869,11 @@
       "CMS (Nov 2024)",
       "UW Medicine Telestroke Program"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "KADLEC REGIONAL MEDICAL CENTER",
@@ -744,7 +891,10 @@
       "CMS (Nov 2024)",
       "WA DOH (Oct 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": "PSC",
+    "certifyingBody": "Joint Commission",
+    "certificationDetails": "Joint Commission Primary Stroke Center"
   },
   {
     "name": "Madigan AMC (FT Lewis)",
@@ -760,7 +910,11 @@
     "dataSources": [
       "CMS (Nov 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "CASCADE VALLEY HOSPITAL",
@@ -778,7 +932,10 @@
       "CMS (Nov 2024)",
       "WA DOH (Oct 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null
   },
   {
     "name": "HARBORVIEW MEDICAL CENTER",
@@ -793,7 +950,7 @@
     "uwPartner": false,
     "strokeCertificationType": "CSC",
     "certifyingBody": "Joint Commission",
-    "certificationDetails": "Joint Commission Comprehensive Stroke Center",
+    "certificationDetails": "Joint Commission Comprehensive Stroke Center - Only JC-accredited CSC in Washington",
     "hasELVO": true,
     "dataSources": [
       "CMS (Nov 2024)",
@@ -817,7 +974,10 @@
       "CMS (Nov 2024)",
       "WA DOH (Oct 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": "ASR",
+    "certifyingBody": "DNV",
+    "certificationDetails": "DNV Acute Stroke Ready Center"
   },
   {
     "name": "PROVIDENCE HOLY FAMILY HOSPITAL",
@@ -835,7 +995,10 @@
       "CMS (Nov 2024)",
       "WA DOH (Oct 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null
   },
   {
     "name": "MULTICARE GOOD SAMARITAN HOSPITAL",
@@ -872,7 +1035,11 @@
     "dataSources": [
       "CMS (Nov 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "VALLEY MEDICAL CENTER",
@@ -908,7 +1075,11 @@
     "dataSources": [
       "CMS (Nov 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": "PSC",
+    "certifyingBody": "Joint Commission",
+    "certificationDetails": "Joint Commission Advanced Primary Stroke Center",
+    "hasELVO": false
   },
   {
     "name": "MULTICARE VALLEY HOSPITAL",
@@ -926,7 +1097,10 @@
       "CMS (Nov 2024)",
       "WA DOH (Oct 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null
   },
   {
     "name": "EVERGREENHEALTH MEDICAL CENTER",
@@ -941,7 +1115,7 @@
     "uwPartner": false,
     "strokeCertificationType": "TSC",
     "certifyingBody": "DNV",
-    "certificationDetails": "DNV Primary Stroke Center Plus (PSC+)",
+    "certificationDetails": "DNV Primary Stroke Center Plus (PSC+) - Thrombectomy-capable",
     "hasELVO": true,
     "dataSources": [
       "CMS (Nov 2024)",
@@ -985,7 +1159,10 @@
       "CMS (Nov 2024)",
       "WA DOH (Oct 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": "PSC",
+    "certifyingBody": "DNV",
+    "certificationDetails": "DNV Primary Stroke Center"
   },
   {
     "name": "ST FRANCIS COMMUNITY HOSPITAL",
@@ -1001,7 +1178,11 @@
     "dataSources": [
       "CMS (Nov 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "LEGACY SALMON CREEK MEDICAL CENTER",
@@ -1019,7 +1200,10 @@
       "CMS (Nov 2024)",
       "WA DOH (Oct 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null
   },
   {
     "name": "ST ANTHONY HOSPITAL",
@@ -1035,7 +1219,11 @@
     "dataSources": [
       "CMS (Nov 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "SWEDISH ISSAQUAH",
@@ -1053,7 +1241,10 @@
       "CMS (Nov 2024)",
       "WA DOH (Oct 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null
   },
   {
     "name": "MULTICARE COVINGTON MEDICAL CENTER",
@@ -1069,7 +1260,11 @@
     "dataSources": [
       "CMS (Nov 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "GARFIELD COUNTY PUBLIC HOSPITAL DISTRICT #1",
@@ -1085,7 +1280,11 @@
     "dataSources": [
       "CMS (Nov 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "DAYTON GENERAL HOSPITAL",
@@ -1103,7 +1302,10 @@
       "CMS (Nov 2024)",
       "WA DOH (Oct 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null
   },
   {
     "name": "WILLAPA HARBOR HOSPITAL",
@@ -1121,7 +1323,10 @@
       "CMS (Nov 2024)",
       "WA DOH (Oct 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null
   },
   {
     "name": "SUMMIT PACIFIC MEDICAL CENTER",
@@ -1139,7 +1344,10 @@
       "CMS (Nov 2024)",
       "WA DOH (Oct 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null
   },
   {
     "name": "LINCOLN HOSPITAL",
@@ -1155,7 +1363,11 @@
     "dataSources": [
       "CMS (Nov 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "ODESSA MEMORIAL HEALTHCARE CENTER",
@@ -1171,7 +1383,11 @@
     "dataSources": [
       "CMS (Nov 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "COULEE MEDICAL CENTER",
@@ -1189,7 +1405,10 @@
       "CMS (Nov 2024)",
       "WA DOH (Oct 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null
   },
   {
     "name": "PROVIDENCE ST JOSEPH HOSPITAL",
@@ -1205,7 +1424,11 @@
     "dataSources": [
       "CMS (Nov 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "NEWPORT COMMUNITY HOSPITAL",
@@ -1221,7 +1444,11 @@
     "dataSources": [
       "CMS (Nov 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "EAST ADAMS RURAL HOSPITAL",
@@ -1239,7 +1466,10 @@
       "CMS (Nov 2024)",
       "WA DOH (Oct 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null
   },
   {
     "name": "PROSSER MEMORIAL HOSPITAL",
@@ -1257,7 +1487,10 @@
       "CMS (Nov 2024)",
       "WA DOH (Oct 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null
   },
   {
     "name": "CASCADE MEDICAL CENTER",
@@ -1274,7 +1507,11 @@
       "CMS (Nov 2024)",
       "UW Medicine Telestroke Program"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "OCEAN BEACH HOSPITAL",
@@ -1292,7 +1529,10 @@
       "CMS (Nov 2024)",
       "WA DOH (Oct 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null
   },
   {
     "name": "SKYLINE HOSPITAL",
@@ -1310,7 +1550,10 @@
       "CMS (Nov 2024)",
       "WA DOH (Oct 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null
   },
   {
     "name": "KLICKITAT VALLEY HOSPITAL",
@@ -1326,7 +1569,11 @@
     "dataSources": [
       "CMS (Nov 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "COLUMBIA BASIN HOSPITAL",
@@ -1345,7 +1592,10 @@
       "WA DOH (Oct 2024)",
       "UW Medicine Telestroke Program"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null
   },
   {
     "name": "OTHELLO COMMUNITY HOSPITAL",
@@ -1363,7 +1613,10 @@
       "CMS (Nov 2024)",
       "WA DOH (Oct 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null
   },
   {
     "name": "ARBOR HEALTH MORTON HOSPITAL",
@@ -1379,7 +1632,11 @@
     "dataSources": [
       "CMS (Nov 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "QUINCY VALLEY MEDICAL CENTER",
@@ -1397,7 +1654,10 @@
       "CMS (Nov 2024)",
       "WA DOH (Oct 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null
   },
   {
     "name": "NORTH VALLEY HOSPITAL",
@@ -1415,7 +1675,10 @@
       "CMS (Nov 2024)",
       "WA DOH (Oct 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null
   },
   {
     "name": "FERRY COUNTY MEMORIAL HOSPITAL",
@@ -1433,7 +1696,10 @@
       "CMS (Nov 2024)",
       "WA DOH (Oct 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null
   },
   {
     "name": "JEFFERSON HEALTHCARE",
@@ -1451,7 +1717,10 @@
       "CMS (Nov 2024)",
       "WA DOH (Oct 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null
   },
   {
     "name": "THREE RIVERS HOSPITAL",
@@ -1469,7 +1738,10 @@
       "CMS (Nov 2024)",
       "WA DOH (Oct 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null
   },
   {
     "name": "FORKS COMMUNITY HOSPITAL",
@@ -1485,7 +1757,11 @@
     "dataSources": [
       "CMS (Nov 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "PROVIDENCE MOUNT CARMEL HOSPITAL",
@@ -1503,7 +1779,10 @@
       "CMS (Nov 2024)",
       "WA DOH (Oct 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null
   },
   {
     "name": "WHITMAN HOSPITAL AND MEDICAL CENTER",
@@ -1519,7 +1798,11 @@
     "dataSources": [
       "CMS (Nov 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "MID VALLEY HOSPITAL & CLINIC",
@@ -1535,7 +1818,11 @@
     "dataSources": [
       "CMS (Nov 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "PEACEHEALTH UNITED GENERAL MEDICAL CENTER",
@@ -1552,7 +1839,11 @@
       "CMS (Nov 2024)",
       "UW Medicine Telestroke Program"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "ASTRIA SUNNYSIDE HOSPITAL",
@@ -1569,7 +1860,11 @@
       "CMS (Nov 2024)",
       "UW Medicine Telestroke Program"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "PULLMAN REGIONAL HOSPITAL",
@@ -1587,7 +1882,10 @@
       "CMS (Nov 2024)",
       "WA DOH (Oct 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": "ASR",
+    "certifyingBody": "DNV",
+    "certificationDetails": "DNV Acute Stroke Ready Center"
   },
   {
     "name": "TRI-STATE MEMORIAL HOSPITAL",
@@ -1603,7 +1901,11 @@
     "dataSources": [
       "CMS (Nov 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "KITTITAS VALLEY COMMUNITY HOSPITAL",
@@ -1621,7 +1923,10 @@
       "CMS (Nov 2024)",
       "WA DOH (Oct 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null
   },
   {
     "name": "LAKE CHELAN COMMUNITY HOSPITAL",
@@ -1639,7 +1944,10 @@
       "CMS (Nov 2024)",
       "WA DOH (Oct 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null
   },
   {
     "name": "ST ELIZABETH HOSPITAL",
@@ -1655,7 +1963,11 @@
     "dataSources": [
       "CMS (Nov 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "MASON GENERAL HOSPITAL & FAMILY OF CLINICS",
@@ -1672,7 +1984,11 @@
       "CMS (Nov 2024)",
       "UW Medicine Telestroke Program"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "LOURDES MEDICAL CENTER",
@@ -1691,7 +2007,10 @@
       "WA DOH (Oct 2024)",
       "UW Medicine Telestroke Program"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null
   },
   {
     "name": "SNOQUALMIE VALLEY HOSPITAL",
@@ -1710,7 +2029,10 @@
       "WA DOH (Oct 2024)",
       "UW Medicine Telestroke Program"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null
   },
   {
     "name": "WHIDBEYHEALTH MEDICAL CENTER",
@@ -1726,7 +2048,11 @@
     "dataSources": [
       "CMS (Nov 2024)"
     ],
-    "verified": true
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
   },
   {
     "name": "PEACEHEALTH PEACE ISLAND MEDICAL CENTER",
@@ -1742,6 +2068,53 @@
     "dataSources": [
       "CMS (Nov 2024)",
       "UW Medicine Telestroke Program"
+    ],
+    "verified": true,
+    "strokeCertificationType": null,
+    "certifyingBody": null,
+    "certificationDetails": null,
+    "hasELVO": false
+  },
+  {
+    "name": "PROVIDENCE SACRED HEART MEDICAL CENTER",
+    "address": "101 WEST 8TH AVENUE",
+    "zip": "99220",
+    "state": "WA",
+    "cmsId": "500054",
+    "latitude": 47.6596,
+    "longitude": -117.4182,
+    "geocoded": true,
+    "geocodeSource": "Manual (web-verified)",
+    "uwPartner": false,
+    "strokeCertificationType": "TSC",
+    "certifyingBody": "Joint Commission",
+    "certificationDetails": "Joint Commission Thrombectomy-Capable Stroke Center",
+    "hasELVO": true,
+    "dataSources": [
+      "CMS (Nov 2024)",
+      "Joint Commission (2024)"
+    ],
+    "verified": true
+  },
+  {
+    "name": "UW MEDICAL CENTER NORTHWEST",
+    "address": "1550 NORTH 115TH STREET",
+    "zip": "98133",
+    "state": "WA",
+    "cmsId": "500001",
+    "latitude": 47.7086,
+    "longitude": -122.3405,
+    "geocoded": true,
+    "geocodeSource": "Manual (web-verified)",
+    "uwPartner": false,
+    "strokeCertificationType": "PSC",
+    "certifyingBody": "Joint Commission",
+    "certificationDetails": "Joint Commission Advanced Primary Stroke Center - Also WA State Level 1",
+    "hasELVO": false,
+    "dataSources": [
+      "CMS (Nov 2024)",
+      "Joint Commission (2024)",
+      "WA DOH (2024)"
     ],
     "verified": true
   }
