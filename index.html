@@ -262,17 +262,26 @@
                 margin: 0;
                 border-radius: 0;
                 max-height: none;
+                transition: transform 0.3s ease;
             }
 
             .control-panel {
+                position: fixed;
                 top: 0;
                 left: 0;
                 right: 0;
                 width: 100% !important;
-                padding: 16px;
+                padding: 0;
+                padding-bottom: 16px;
                 border-radius: 0 0 12px 12px;
-                max-height: 50vh;
+                max-height: 70vh;
                 overflow-y: auto;
+                transform: translateY(-100%);
+                z-index: 1001;
+            }
+
+            .control-panel.mobile-visible {
+                transform: translateY(0);
             }
 
             .stats-panel {
@@ -282,13 +291,25 @@
                 right: 0;
                 top: auto;
                 width: 100% !important;
-                padding: 12px 16px;
+                padding: 0;
+                padding-top: 12px;
+                padding-bottom: 12px;
                 border-radius: 12px 12px 0 0;
                 display: grid;
                 grid-template-columns: repeat(2, 1fr);
                 gap: 8px;
-                max-height: 40vh;
+                max-height: 50vh;
                 overflow-y: auto;
+                transform: translateY(100%);
+                z-index: 1001;
+            }
+
+            .stats-panel.mobile-visible {
+                transform: translateY(0);
+            }
+
+            .panel-content-wrapper {
+                padding: 16px;
             }
 
             .info-panel {
@@ -370,29 +391,75 @@
                 grid-template-columns: 1fr 1fr !important;
             }
 
-            /* Collapsible panels for mobile */
-            .panel-toggle {
-                display: block;
-                width: 100%;
-                padding: 12px;
+            /* Mobile toggle buttons */
+            .mobile-toggle-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                position: fixed;
+                padding: 12px 20px;
                 background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
                 color: white;
                 border: none;
                 font-weight: 600;
                 cursor: pointer;
-                text-align: center;
                 font-size: 14px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+                z-index: 1002;
+                border-radius: 8px;
+                transition: all 0.3s ease;
             }
 
-            .panel-content {
-                max-height: 0;
-                overflow: hidden;
-                transition: max-height 0.3s ease;
+            .mobile-toggle-btn:active {
+                transform: scale(0.95);
             }
 
-            .panel-content.expanded {
-                max-height: 50vh;
-                overflow-y: auto;
+            #toggle-filters-btn {
+                top: 10px;
+                left: 10px;
+            }
+
+            #toggle-stats-btn {
+                bottom: 10px;
+                right: 10px;
+            }
+
+            .mobile-toggle-icon {
+                font-size: 18px;
+                line-height: 1;
+            }
+
+            .mobile-close-btn {
+                display: block !important;
+                width: 100%;
+                padding: 10px;
+                background: #ef4444;
+                color: white;
+                border: none;
+                font-weight: 600;
+                cursor: pointer;
+                font-size: 14px;
+                text-align: center;
+                border-radius: 0;
+                margin: 0;
+                position: sticky;
+                top: 0;
+                z-index: 10;
+            }
+
+            .control-panel .mobile-close-btn {
+                border-radius: 0 0 8px 8px;
+            }
+
+            .stats-panel .mobile-close-btn {
+                border-radius: 8px 8px 0 0;
+                grid-column: 1 / -1;
+            }
+
+            .stat-card {
+                padding: 10px;
+                margin-bottom: 0;
             }
         }
 
@@ -413,8 +480,8 @@
             }
         }
 
-        /* Collapsible panel toggle (hidden on desktop) */
-        .panel-toggle {
+        /* Hide mobile toggle buttons on desktop */
+        .mobile-toggle-btn {
             display: none;
         }
     </style>
@@ -422,8 +489,19 @@
 <body>
     <div id="map"></div>
 
+    <!-- Mobile Toggle Buttons -->
+    <button id="toggle-filters-btn" class="mobile-toggle-btn" onclick="toggleMobilePanel('control')">
+        <span class="mobile-toggle-icon">⚙️</span>
+        <span>Filters</span>
+    </button>
+    <button id="toggle-stats-btn" class="mobile-toggle-btn" onclick="toggleMobilePanel('stats')">
+        <span class="mobile-toggle-icon">📊</span>
+        <span>Stats</span>
+    </button>
+
     <!-- Control Panel -->
     <div class="panel control-panel">
+        <button class="mobile-close-btn" onclick="toggleMobilePanel('control')" style="display: none;">✕ Close</button>
         <div class="app-header">
             <h1>Regional Hospital Stroke Capabilities</h1>
             <p>Washington, Southeast Alaska, Northern Idaho</p>
@@ -618,6 +696,7 @@
 
     <!-- Stats Panel -->
     <div class="panel stats-panel">
+        <button class="mobile-close-btn" onclick="toggleMobilePanel('stats')" style="display: none;">✕ Close</button>
         <div class="stat-card">
             <div class="stat-value" id="stat-total">0</div>
             <div class="stat-label">Total Hospitals Shown</div>
@@ -770,6 +849,35 @@
         </div>
     </div>
 
+    <script>
+        // Mobile panel toggle functionality
+        function toggleMobilePanel(panelType) {
+            if (panelType === 'control') {
+                const panel = document.querySelector('.control-panel');
+                panel.classList.toggle('mobile-visible');
+            } else if (panelType === 'stats') {
+                const panel = document.querySelector('.stats-panel');
+                panel.classList.toggle('mobile-visible');
+            }
+        }
+
+        // Close panels when clicking on map (mobile only)
+        document.addEventListener('DOMContentLoaded', function() {
+            const map = document.getElementById('map');
+            map.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768) {
+                    const controlPanel = document.querySelector('.control-panel');
+                    const statsPanel = document.querySelector('.stats-panel');
+
+                    // Only close if clicking directly on map, not on markers
+                    if (e.target.id === 'map' || e.target.classList.contains('leaflet-container')) {
+                        controlPanel.classList.remove('mobile-visible');
+                        statsPanel.classList.remove('mobile-visible');
+                    }
+                }
+            });
+        });
+    </script>
     <script src="complete_hospitals.js"></script>
 </body>
 </html>
