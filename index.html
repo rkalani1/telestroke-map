@@ -484,10 +484,63 @@
         .mobile-toggle-btn {
             display: none;
         }
+
+        /* Mobile persistent search bar */
+        .mobile-search-bar {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-search-bar {
+                display: block;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                background: white;
+                padding: 12px 16px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+                z-index: 1002;
+            }
+
+            .mobile-search-bar input {
+                width: 100%;
+                padding: 12px 16px;
+                border: 2px solid #e5e7eb;
+                border-radius: 8px;
+                font-size: 16px;
+            }
+
+            .mobile-search-bar input:focus {
+                outline: none;
+                border-color: #667eea;
+            }
+
+            /* Adjust map to account for search bar */
+            #map {
+                margin-top: 64px;
+                height: calc(100vh - 64px);
+            }
+
+            /* Adjust toggle buttons to account for search bar */
+            .mobile-toggle-btn {
+                top: 74px !important;
+            }
+        }
     </style>
 </head>
 <body>
     <div id="map"></div>
+
+    <!-- Mobile Persistent Search Bar -->
+    <div class="mobile-search-bar">
+        <input
+            type="text"
+            id="mobile-search-input"
+            placeholder="Search hospitals..."
+            oninput="filterHospitals()"
+        >
+    </div>
 
     <!-- Mobile Toggle Buttons -->
     <button id="toggle-filters-btn" class="mobile-toggle-btn" onclick="toggleMobilePanel('control')">
@@ -876,6 +929,22 @@
                     }
                 }
             });
+
+            // Synchronize mobile and desktop search inputs
+            const mobileSearch = document.getElementById('mobile-search-input');
+            const desktopSearch = document.getElementById('search-input');
+
+            if (mobileSearch && desktopSearch) {
+                // When mobile search changes, update desktop search
+                mobileSearch.addEventListener('input', function() {
+                    desktopSearch.value = this.value;
+                });
+
+                // When desktop search changes, update mobile search
+                desktopSearch.addEventListener('input', function() {
+                    mobileSearch.value = this.value;
+                });
+            }
         });
     </script>
     <script src="complete_hospitals.js"></script>
