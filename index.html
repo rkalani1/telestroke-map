@@ -526,6 +526,77 @@
                 top: 74px !important;
             }
         }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background-color: #1a202c;
+            color: #e2e8f0;
+        }
+
+        body.dark-mode .panel {
+            background: #2d3748;
+            color: #e2e8f0;
+        }
+
+        body.dark-mode .app-header {
+            background: linear-gradient(135deg, #4c51bf 0%, #553c9a 100%);
+        }
+
+        body.dark-mode .filter-section h3 {
+            color: #e2e8f0;
+        }
+
+        body.dark-mode .search-box input,
+        body.dark-mode select {
+            background: #1a202c;
+            color: #e2e8f0;
+            border-color: #4a5568;
+        }
+
+        body.dark-mode .action-button {
+            background: #4c51bf;
+        }
+
+        body.dark-mode .action-button:hover {
+            background: #5a67d8;
+        }
+
+        body.dark-mode .checkbox-label:hover {
+            background: #374151;
+        }
+
+        body.dark-mode .cert-description,
+        body.dark-mode .disclaimer {
+            background: #374151;
+            color: #e2e8f0;
+        }
+
+        body.dark-mode #map {
+            filter: brightness(0.8) contrast(1.1);
+        }
+
+        /* Print Styles */
+        @media print {
+            .panel, .mobile-toggle-btn, .mobile-search-bar {
+                display: none !important;
+            }
+
+            #map {
+                position: relative !important;
+                width: 100% !important;
+                height: 600px !important;
+                margin: 0 !important;
+            }
+
+            body {
+                background: white !important;
+                color: black !important;
+            }
+
+            .leaflet-control-zoom {
+                display: none !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -557,6 +628,7 @@
         <div class="app-header">
             <h1>Regional Hospital Stroke Capabilities</h1>
             <p>Washington, Southeast Alaska, Northern Idaho</p>
+            <p style="font-size: 10px; opacity: 0.8; margin-top: 4px;">Last Updated: January 2025</p>
         </div>
 
         <!-- Search Box -->
@@ -653,32 +725,7 @@
             </div>
         </div>
 
-        <!-- Expansion Planning Features -->
-        <div class="filter-section">
-            <h3>Planning Tools</h3>
-            <button class="action-button" onclick="showNearestAdvancedCenter()">Nearest CSC/TSC Distance</button>
-            <button class="action-button" onclick="identifyEVTDeserts()">EVT Deserts (>100mi)</button>
-            <button class="action-button" onclick="rankExpansionCandidates()">Expansion Candidates</button>
-            <button class="action-button" onclick="showDistanceMatrix()">Distance Matrix</button>
-            <button class="action-button" onclick="toggleAdvancedFilters()">Multi-Criteria Filter</button>
-        </div>
-
-        <!-- New Strategic Planning Features -->
-        <div class="filter-section">
-            <h3>Planning Features</h3>
-            <button class="action-button" onclick="toggleUWPartnerNetwork()">UW Partner Network</button>
-            <button class="action-button" onclick="highlightZeroCapability()">Zero-Capability Hospitals</button>
-            <button class="action-button" onclick="toggleReferralPathways()">Nearest CSC / TSC</button>
-        </div>
-
-        <!-- Analysis & Reporting -->
-        <div class="filter-section">
-            <h3>Reports</h3>
-            <button class="action-button" onclick="generateExecutiveSummary()">Generate Summary</button>
-            <button class="action-button" onclick="exportMapToPNG()">Export Map to PNG</button>
-        </div>
-
-        <!-- Quick Filters -->
+        <!-- Quick Filters (Moved to top for frequent use) -->
         <div class="filter-section">
             <h3>Filters</h3>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
@@ -691,6 +738,27 @@
                 <button class="action-button" style="padding: 8px 12px; font-size: 12px;" onclick="quickFilter('EXPANSION')">Expansion Targets</button>
                 <button class="action-button" style="padding: 8px 12px; font-size: 12px; background: #6b7280;" onclick="clearQuickFilters()">Clear Filters</button>
             </div>
+        </div>
+
+        <!-- Consolidated Planning Section -->
+        <div class="filter-section">
+            <h3>Planning <span style="font-size: 11px; opacity: 0.7; font-weight: 400; cursor: help;" title="Tools for strategic planning and network expansion">(?)</span></h3>
+            <button class="action-button" onclick="toggleUWPartnerNetwork()" title="Show UW Medicine telestroke partner network connections">UW Partner Network</button>
+            <button class="action-button" onclick="highlightZeroCapability()" title="Highlight hospitals with no stroke certification">No Capability</button>
+            <button class="action-button" onclick="toggleReferralPathways()" title="Show nearest CSC/TSC for each hospital">Nearest CSC/TSC</button>
+            <button class="action-button" onclick="showNearestAdvancedCenter()" title="Color-code hospitals by distance to nearest CSC/TSC">CSC/TSC Distance</button>
+            <button class="action-button" onclick="identifyEVTDeserts()" title="Hospitals >100mi from thrombectomy centers">EVT Deserts</button>
+            <button class="action-button" onclick="rankExpansionCandidates()" title="Rank hospitals by expansion priority score">Expansion Candidates</button>
+            <button class="action-button" onclick="showDistanceMatrix()" title="View comprehensive distance matrix table">Distance Matrix</button>
+            <button class="action-button" onclick="toggleAdvancedFilters()" title="Apply multiple filter criteria simultaneously">Advanced Filter</button>
+        </div>
+
+        <!-- Reports Section -->
+        <div class="filter-section">
+            <h3>Reports <span style="font-size: 11px; opacity: 0.7; font-weight: 400; cursor: help;" title="Generate summaries and export data">(?)</span></h3>
+            <button class="action-button" onclick="generateExecutiveSummary()" title="Generate text summary of current map view">Generate Summary</button>
+            <button class="action-button" onclick="exportMapToPNG()" title="Export current map view as PNG image">Export Map to PNG</button>
+            <button class="action-button" onclick="printFriendlyView()" title="Generate print-friendly version of current view">Print View</button>
         </div>
 
         <!-- Advanced Filter Panel (Initially Hidden) -->
@@ -730,14 +798,16 @@
         </div>
 
         <!-- Action Buttons -->
-        <button class="action-button" onclick="exportToCSV()">Export to CSV</button>
-        <button class="action-button" onclick="shareCurrentView()">Share Current View (Copy URL)</button>
-        <button class="action-button" onclick="resetFilters()">Reset All Filters</button>
+        <button class="action-button" onclick="exportToCSV()" title="Export hospital data to CSV file">Export to CSV</button>
+        <button class="action-button" onclick="shareCurrentView()" title="Copy shareable URL to clipboard">Share View</button>
+        <button class="action-button" onclick="resetFilters()" title="Reset all filters to default (Keyboard: R)">Reset All</button>
+        <button class="action-button" onclick="toggleDarkMode()" id="dark-mode-toggle" title="Toggle dark mode (reduces eye strain)">🌙 Dark Mode</button>
     </div>
 
     <!-- Stats Panel -->
-    <div class="panel stats-panel">
+    <div class="panel stats-panel" id="stats-panel">
         <button class="mobile-close-btn" onclick="toggleMobilePanel('stats')" style="display: none;">✕ Close</button>
+        <button onclick="toggleStatsPanel()" style="position: absolute; top: 10px; right: 10px; background: #e5e7eb; border: none; border-radius: 4px; padding: 4px 8px; cursor: pointer; font-size: 11px; z-index: 10;" title="Collapse/expand stats panel">−</button>
         <div class="stat-card">
             <div class="stat-value" id="stat-total">0</div>
             <div class="stat-label">Total Hospitals Shown</div>
@@ -921,7 +991,80 @@
                     mobileSearch.value = this.value;
                 });
             }
+
+            // Initialize dark mode from localStorage
+            if (localStorage.getItem('darkMode') === 'enabled') {
+                enableDarkMode();
+            }
+
+            // Keyboard shortcuts
+            document.addEventListener('keydown', function(e) {
+                // Ctrl+F or / - Focus search
+                if ((e.ctrlKey && e.key === 'f') || e.key === '/') {
+                    e.preventDefault();
+                    document.getElementById('search-input').focus();
+                }
+                // Esc - Close modals
+                else if (e.key === 'Escape') {
+                    closeInfo();
+                    closeDistanceMatrix();
+                    closeExpansionRanking();
+                    closeHospitalDetail();
+                    closeExecutiveSummary();
+                }
+                // R - Reset filters
+                else if (e.key === 'r' || e.key === 'R') {
+                    if (document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+                        resetFilters();
+                    }
+                }
+            });
         });
+
+        // Dark Mode Toggle
+        function toggleDarkMode() {
+            const body = document.body;
+            if (body.classList.contains('dark-mode')) {
+                disableDarkMode();
+            } else {
+                enableDarkMode();
+            }
+        }
+
+        function enableDarkMode() {
+            document.body.classList.add('dark-mode');
+            localStorage.setItem('darkMode', 'enabled');
+            const btn = document.getElementById('dark-mode-toggle');
+            if (btn) btn.textContent = '☀️ Light Mode';
+        }
+
+        function disableDarkMode() {
+            document.body.classList.remove('dark-mode');
+            localStorage.setItem('darkMode', null);
+            const btn = document.getElementById('dark-mode-toggle');
+            if (btn) btn.textContent = '🌙 Dark Mode';
+        }
+
+        // Stats Panel Toggle
+        function toggleStatsPanel() {
+            const panel = document.getElementById('stats-panel');
+            const btn = event.target;
+            if (panel.style.height === '60px') {
+                panel.style.height = '';
+                panel.style.overflow = '';
+                btn.textContent = '−';
+            } else {
+                panel.style.height = '60px';
+                panel.style.overflow = 'hidden';
+                btn.textContent = '+';
+            }
+        }
+
+        // Print-Friendly View
+        function printFriendlyView() {
+            // Open print dialog
+            window.print();
+        }
     </script>
     <script src="complete_hospitals.js"></script>
 </body>
