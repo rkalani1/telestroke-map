@@ -378,8 +378,7 @@
             #distance-matrix-modal > div,
             #expansion-modal > div,
             #hospital-detail-modal > div,
-            #executive-summary-modal > div,
-            #compare-modal > div {
+            #executive-summary-modal > div {
                 margin: 10px;
                 max-width: calc(100vw - 20px);
                 padding: 16px;
@@ -669,9 +668,7 @@
             <h3>Strategic Planning Features</h3>
             <button class="action-button" onclick="toggleUWPartnerNetwork()">Show UW Partner Network</button>
             <button class="action-button" onclick="highlightZeroCapability()">Show Zero-Capability Hospitals</button>
-            <button class="action-button" onclick="toggleCSCServiceAreas()">Show CSC Service Areas</button>
             <button class="action-button" onclick="toggleReferralPathways()">Show Referral Pathways</button>
-            <button class="action-button" onclick="toggleClusterMarkers()">Toggle Cluster Markers</button>
         </div>
 
         <!-- Analysis & Reporting -->
@@ -679,14 +676,6 @@
             <h3>Analysis & Reporting</h3>
             <button class="action-button" onclick="generateExecutiveSummary()">Generate Executive Summary</button>
             <button class="action-button" onclick="exportMapToPNG()">Export Map to PNG</button>
-            <button class="action-button" onclick="toggleCompareMode()">Compare Two Hospitals</button>
-        </div>
-
-        <!-- Scenario Planning -->
-        <div class="filter-section">
-            <h3>Scenario Planning</h3>
-            <button class="action-button" onclick="startWhatIfScenario()">What-If Scenario Builder</button>
-            <button class="action-button" onclick="findOptimalEVTLocation()">Find Optimal EVT Location</button>
         </div>
 
         <!-- Quick Filters -->
@@ -885,18 +874,6 @@
             <button class="action-button" style="margin-bottom: 12px;" onclick="downloadExecutiveSummary()">Download as Text File</button>
             <div id="executive-summary-content" style="font-family: monospace; font-size: 12px; white-space: pre-wrap; background: #f9fafb; padding: 16px; border-radius: 8px; max-height: 60vh; overflow-y: auto;">
                 <!-- Content will be inserted here -->
-            </div>
-        </div>
-    </div>
-
-    <!-- Compare Hospitals Modal -->
-    <div id="compare-modal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 2000; overflow: auto;">
-        <div style="background: white; margin: 50px auto; max-width: 800px; border-radius: 12px; padding: 24px; max-height: calc(100vh - 100px); overflow: auto;">
-            <button class="close-button" onclick="closeCompare()">Close</button>
-            <h2 style="font-size: 18px; font-weight: 700; margin-bottom: 16px;">Hospital Comparison</h2>
-            <p id="compare-instructions" style="font-size: 13px; color: #6b7280; margin-bottom: 16px;">Click on the first hospital to compare...</p>
-            <div id="compare-content">
-                <!-- Comparison will be inserted here -->
             </div>
         </div>
     </div>
