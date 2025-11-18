@@ -964,8 +964,6 @@ function clearAdvancedFilters() {
 // ============================================================================
 
 // Global variables for new features
-let coverageCircles = [];
-let coverageCirclesVisible = false;
 let uwNetworkLines = [];
 let uwNetworkVisible = false;
 let cscServicePolygons = [];
@@ -981,77 +979,6 @@ let whatIfMode = false;
 let whatIfMarker = null;
 let optimalEVTMarker = null;
 let activeQuickFilter = null;
-
-// ============================================================================
-// FEATURE 1: Coverage Radius Circles (A1)
-// ============================================================================
-
-function toggleCoverageCircles() {
-    if (coverageCirclesVisible) {
-        // Remove circles
-        coverageCircles.forEach(circle => map.removeLayer(circle));
-        coverageCircles = [];
-        coverageCirclesVisible = false;
-        console.log('Coverage circles removed');
-    } else {
-        // Get CSC and TSC hospitals
-        const cscTscHospitals = HOSPITALS.filter(h =>
-            h.strokeCertificationType === 'CSC' || h.strokeCertificationType === 'TSC'
-        );
-
-        console.log(`Drawing coverage circles for ${cscTscHospitals.length} CSC/TSC hospitals`);
-
-        // Draw concentric circles for each CSC/TSC
-        cscTscHospitals.forEach(hospital => {
-            // 25 miles - light blue
-            const circle25 = L.circle([hospital.latitude, hospital.longitude], {
-                radius: 25 * 1609.34, // Convert miles to meters
-                fillColor: '#3b82f6',
-                color: '#3b82f6',
-                weight: 1,
-                opacity: 0.3,
-                fillOpacity: 0.1
-            }).addTo(map);
-            coverageCircles.push(circle25);
-
-            // 50 miles - blue
-            const circle50 = L.circle([hospital.latitude, hospital.longitude], {
-                radius: 50 * 1609.34,
-                fillColor: '#2563eb',
-                color: '#2563eb',
-                weight: 1,
-                opacity: 0.4,
-                fillOpacity: 0.15
-            }).addTo(map);
-            coverageCircles.push(circle50);
-
-            // 75 miles - darker blue
-            const circle75 = L.circle([hospital.latitude, hospital.longitude], {
-                radius: 75 * 1609.34,
-                fillColor: '#1d4ed8',
-                color: '#1d4ed8',
-                weight: 1,
-                opacity: 0.5,
-                fillOpacity: 0.2
-            }).addTo(map);
-            coverageCircles.push(circle75);
-
-            // 100 miles - dark blue
-            const circle100 = L.circle([hospital.latitude, hospital.longitude], {
-                radius: 100 * 1609.34,
-                fillColor: '#1e40af',
-                color: '#1e40af',
-                weight: 2,
-                opacity: 0.6,
-                fillOpacity: 0.25
-            }).addTo(map);
-            coverageCircles.push(circle100);
-        });
-
-        coverageCirclesVisible = true;
-        alert(`Coverage circles displayed for ${cscTscHospitals.length} CSC/TSC hospitals.\n\nCircles show: 25mi, 50mi, 75mi, 100mi radius coverage areas.`);
-    }
-}
 
 // ============================================================================
 // FEATURE 2: UW Partner Network Visualization (B3)
